@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
+const PLAYBACK_RATE = 0.75;
+
 type PingPongVideoProps = {
   src: string;
   className?: string;
@@ -17,30 +19,34 @@ export function PingPongVideo({ src, className }: PingPongVideoProps) {
     let rafId = 0;
 
     const playForward = () => {
-      video.playbackRate = 1;
+      video.playbackRate = PLAYBACK_RATE;
       void video.play();
     };
 
     const onEnded = () => {
       let lastTs = performance.now();
 
-      const reverse = (now: number) => {
-        const dt = Math.min((now - lastTs) / 1000, 1 / 24);
+      const stepReverse = (now: number) => {
+        const dt = Math.min((now - lastTs) / 1000, 1 / 30);
         lastTs = now;
-        const next = video.currentTime - dt;
+        const step = dt * PLAYBACK_RATE;
+        const next = video.currentTime - step;
+
         if (next <= 0.03) {
           video.currentTime = 0;
           playForward();
           return;
         }
+
         video.currentTime = next;
-        rafId = requestAnimationFrame(reverse);
+        rafId = requestAnimationFrame(stepReverse);
       };
 
-      rafId = requestAnimationFrame(reverse);
+      rafId = requestAnimationFrame(stepReverse);
     };
 
     video.addEventListener("ended", onEnded);
+    video.playbackRate = PLAYBACK_RATE;
     void video.play();
 
     return () => {

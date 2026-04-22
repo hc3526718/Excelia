@@ -1,5 +1,5 @@
-import { HeroSection } from "@/components/hero/HeroSection";
+import { LandingExperience } from "@/components/landing/LandingExperience";
 
 export default function Home() {
-  return <HeroSection />;
+  return <LandingExperience />;
 }
