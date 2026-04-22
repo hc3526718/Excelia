@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
 :root {
+  /* Header must stay above all page sections (see HeroSection fixed nav). */
+  --z-header: 20000;
+  --z-intro-overlay: 19900;
+  --z-page-under-header: 0;
+
   --excelia-rust: #96492d;
   --excelia-cream: #ede9e2;
   --excelia-forest: #2d4d36;

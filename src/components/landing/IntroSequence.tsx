@@ -59,7 +59,7 @@ export function IntroSequence({
 
   return (
     <motion.div
-      className="pointer-events-none fixed inset-0 z-[19900] flex justify-center pt-4 sm:pt-5"
+      className="pointer-events-none fixed inset-0 z-[19900] flex justify-center pt-3 sm:pt-4"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.32 }}
@@ -74,7 +74,7 @@ export function IntroSequence({
         className={`relative mx-auto overflow-hidden ${panelBase} ${
           isBar
             ? "mt-0 h-[78px] w-[min(72rem,calc(100vw-2rem))] px-4 py-2 sm:px-5"
-            : "mt-[min(6vh,48px)] w-[min(440px,86vw)] max-w-none px-4 pb-4 pt-4 sm:px-5 sm:pb-5 sm:pt-5"
+            : "mt-[min(4vh,36px)] w-[min(340px,82vw)] max-w-none px-3 pb-3 pt-3 sm:px-4 sm:pb-3.5 sm:pt-3.5"
         }`}
         initial={false}
         animate={{
@@ -92,7 +92,7 @@ export function IntroSequence({
           className={`flex h-full min-h-0 items-center ${
             isBar
               ? "flex-row justify-start gap-2"
-              : "flex-col justify-center gap-2 text-center sm:gap-3"
+              : "flex-col justify-center gap-1.5 text-center sm:gap-2"
           }`}
           layout={false}
         >
@@ -106,7 +106,7 @@ export function IntroSequence({
               alt=""
               width={520}
               height={160}
-              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(5.25rem,18vw,7.5rem)] sm:h-[clamp(5.5rem,16vw,8rem)]"}`}
+              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(4rem,14vw,5.75rem)] sm:h-[clamp(4.25rem,12vw,6.25rem)]"}`}
               priority
               aria-hidden
             />
@@ -116,21 +116,21 @@ export function IntroSequence({
             {!isBar && (
               <motion.div
                 key="titles"
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.32 }}
-                className="flex flex-col items-center gap-2 sm:gap-3"
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.28 }}
+                className="flex flex-col items-center gap-1.5 sm:gap-2"
               >
                 <Image
                   src="/assets/Excelia_Name.png"
                   alt="Excelia"
                   width={640}
                   height={128}
-                  className="h-[clamp(4rem,12vw,6.25rem)] w-auto sm:h-[clamp(4.25rem,11vw,7rem)]"
+                  className="h-[clamp(3rem,10vw,4.75rem)] w-auto sm:h-[clamp(3.25rem,9vw,5.25rem)]"
                   priority
                 />
-                <p className="max-w-xl px-1 font-[family-name:var(--font-instrument-serif)] text-[clamp(1.1rem,3.2vw,1.75rem)] italic leading-snug text-[var(--excelia-forest)]">
+                <p className="max-w-lg px-1 font-[family-name:var(--font-instrument-serif)] text-[clamp(0.95rem,2.8vw,1.35rem)] italic leading-snug text-[var(--excelia-forest)]">
                   We grow Carribbean Roots
                 </p>
               </motion.div>

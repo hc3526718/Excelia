@@ -22,7 +22,7 @@ export function FeaturedProducts() {
   return (
     <section
       id="products"
-      className="scroll-mt-24 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-cream)] px-4 py-24 sm:px-8 lg:px-12"
+      className="relative isolate z-0 scroll-mt-24 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-cream)] px-4 py-24 sm:px-8 lg:px-12"
     >
       <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[minmax(0,340px)_1fr] lg:items-start lg:gap-16">
         <div className="max-w-lg space-y-6">

@@ -30,7 +30,7 @@ function StoryWord({
   return (
     <motion.span
       style={{ opacity, y }}
-      className="inline-block whitespace-nowrap font-[family-name:var(--font-barlow)] text-lg font-medium leading-relaxed text-[var(--excelia-olive)] sm:text-xl md:text-[1.35rem]"
+      className="inline-block whitespace-nowrap font-[family-name:var(--font-barlow)] text-[clamp(1.25rem,3.6vw,1.85rem)] font-semibold leading-snug tracking-[-0.02em] text-[var(--excelia-forest)] sm:text-[clamp(1.35rem,3.2vw,2rem)] md:text-[clamp(1.45rem,2.8vw,2.15rem)]"
     >
       {children}
     </motion.span>
@@ -41,7 +41,6 @@ export function StorySection() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    /** Completes over a shorter scroll distance */
     offset: ["start 0.96", "start 0.58"],
   });
 
@@ -51,9 +50,9 @@ export function StorySection() {
     <section
       ref={ref}
       id="story"
-      className="scroll-mt-24 border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] px-4 py-12 sm:px-8 sm:py-14 lg:px-12"
+      className="relative isolate z-0 scroll-mt-24 border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] px-4 py-12 sm:px-8 sm:py-14 lg:px-12"
     >
-      <div className="mx-auto max-w-4xl text-center">
+      <div className="mx-auto max-w-5xl text-center">
         <p className="inline-block max-w-full text-center">
           <span className="inline-flex max-w-full flex-wrap justify-center gap-x-2 gap-y-2 [text-wrap:balance]">
             {words.map((word, i) => (

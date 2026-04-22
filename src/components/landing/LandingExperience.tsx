@@ -12,24 +12,27 @@ import { StorySection } from "@/components/story/StorySection";
 
 const STICKER_TILTS_DEG = [14, 31, 22] as const;
 
-/** Right-column sticker zone only — offsets keep separation */
+/**
+ * ~200px-wide assets with ≥5px gap between bounding boxes on the horizontal axis
+ * where they share the same row band (island vs flag).
+ */
 const STICKERS = [
   {
     src: "/assets/Island_Sticker.png",
     alt: "Island sticker",
-    className: "right-0 top-8 z-[3]",
+    className: "right-0 top-10 z-[3]",
     tiltIndex: 0 as const,
   },
   {
     src: "/assets/Flag_Sticker.png",
     alt: "Flag sticker",
-    className: "right-[13.5rem] top-16 z-[2] sm:right-[15rem] sm:top-20",
+    className: "right-[215px] top-14 z-[2] sm:right-[218px] sm:top-16",
     tiltIndex: 1 as const,
   },
   {
     src: "/assets/Logo_Sticker.png",
     alt: "Logo sticker",
-    className: "right-12 bottom-8 z-[1] sm:right-16 sm:bottom-10",
+    className: "right-6 bottom-12 z-[1] sm:right-8 sm:bottom-14",
     tiltIndex: 2 as const,
   },
 ];
@@ -51,7 +54,7 @@ function ContactFooter() {
   return (
     <footer
       id="contact"
-      className="scroll-mt-24 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-forest)] px-4 py-16 text-[var(--excelia-cream)] sm:px-8"
+      className="relative isolate z-0 scroll-mt-24 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-forest)] px-4 py-16 text-[var(--excelia-cream)] sm:px-8"
     >
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-start lg:gap-12">
         <div className="min-w-0 max-w-lg lg:max-w-none">
@@ -133,8 +136,8 @@ function ContactFooter() {
           </nav>
         </div>
 
-        <div className="relative ml-0 min-h-[240px] w-full shrink-0 lg:min-h-[280px] lg:max-w-none">
-          <div className="relative mx-auto h-[240px] w-full max-w-md sm:h-[260px] lg:absolute lg:inset-0 lg:mx-0 lg:h-full lg:max-w-none">
+        <div className="relative ml-0 min-h-[300px] w-full shrink-0 lg:min-h-[320px] lg:max-w-none">
+          <div className="relative mx-auto h-[300px] w-full max-w-[28rem] sm:h-[320px] lg:absolute lg:inset-0 lg:mx-0 lg:h-full lg:max-w-none">
             {STICKERS.map((s) => (
               <div
                 key={s.src}
@@ -148,8 +151,8 @@ function ContactFooter() {
                   alt={s.alt}
                   width={280}
                   height={280}
-                  className="h-auto w-[min(56vw,210px)] drop-shadow-[0_14px_26px_rgba(0,0,0,0.34)] sm:w-[min(48vw,230px)] lg:w-[210px]"
-                  sizes="(max-width: 1024px) 56vw, 230px"
+                  className="h-auto w-[200px] drop-shadow-[0_14px_26px_rgba(0,0,0,0.34)] sm:w-[200px] lg:w-[200px]"
+                  sizes="200px"
                 />
               </div>
             ))}
@@ -176,7 +179,7 @@ export function LandingExperience() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-0"
+          className="relative isolate z-0"
         >
           <StorySection />
           <PillarsSection />

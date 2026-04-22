@@ -28,27 +28,27 @@ export function PillarsSection() {
   return (
     <section
       id="pillars"
-      className="scroll-mt-24 border-t border-white/10 bg-[var(--excelia-forest)] px-4 py-16 sm:px-8 lg:px-12"
+      className="relative isolate z-0 scroll-mt-24 border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] px-4 py-16 sm:px-8 lg:px-12"
     >
-      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-3 md:gap-10 lg:gap-14">
+      <div className="mx-auto grid max-w-6xl gap-14 md:grid-cols-3 md:gap-12 lg:gap-16">
         {PILLARS.map((item) => (
-          <article key={item.kicker} className="flex gap-5">
+          <article
+            key={item.kicker}
+            className="flex flex-col items-center text-center"
+          >
             <Image
               src={item.icon}
               alt={item.alt}
-              width={80}
-              height={80}
-              className="mt-1 h-16 w-16 shrink-0 object-contain sm:h-[4.5rem] sm:w-[4.5rem]"
+              width={88}
+              height={88}
+              className="h-[4.5rem] w-[4.5rem] object-contain sm:h-20 sm:w-20"
             />
-            <div className="min-w-0">
-              <h2 className="font-[family-name:var(--font-barlow)] text-xs font-semibold uppercase tracking-[0.28em] text-[var(--excelia-gold)]">
-                {item.kicker}
-              </h2>
-              <p className="mt-4 font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[#f2efe8]/94 sm:text-base">
-                <span className="mr-2 font-medium text-[#faf8f3]">→</span>
-                {item.body}
-              </p>
-            </div>
+            <h2 className="mt-5 font-[family-name:var(--font-barlow)] text-xs font-semibold uppercase tracking-[0.28em] text-[var(--excelia-forest)]">
+              {item.kicker}
+            </h2>
+            <p className="mt-4 max-w-sm font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-olive)] sm:text-base">
+              {item.body}
+            </p>
           </article>
         ))}
       </div>
