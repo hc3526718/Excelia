@@ -8,12 +8,12 @@ type Stage = "center" | "morph" | "handoff";
 
 const HOLD_MS = 2200;
 const MORPH_MS = 1300;
-/** Brief beat so the glass bar reads before crossfade into the solid nav */
 const BAR_SETTLE_MS = 200;
 const HANDOFF_MS = 560;
 
-const glassSurface =
-  "border border-white/45 bg-white/[0.18] shadow-[0_28px_90px_rgba(15,40,25,0.18),inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-[38px] backdrop-saturate-[1.7]";
+/** Matches `HeroSection` nav: white + soft lift */
+const panelBase =
+  "rounded-2xl border border-black/[0.06] bg-white shadow-[0_12px_40px_rgba(45,77,54,0.12)]";
 
 type IntroSequenceProps = {
   onMorphComplete: () => void;
@@ -72,10 +72,10 @@ export function IntroSequence({
 
       <motion.div
         layout
-        className={`relative mx-auto overflow-hidden ${glassSurface} ${
+        className={`relative mx-auto overflow-hidden ${panelBase} ${
           isBar
-            ? "mt-0 h-[78px] w-[min(72rem,calc(100vw-2rem))] rounded-2xl px-4 py-2.5 sm:px-5"
-            : "mt-[min(18vh,120px)] w-[min(560px,92vw)] rounded-[28px] px-10 pb-11 pt-11 sm:px-12 sm:pb-12 sm:pt-12"
+            ? "mt-0 h-[78px] w-[min(72rem,calc(100vw-2rem))] px-4 py-2 sm:px-5"
+            : "mt-[min(14vh,100px)] w-[min(920px,94vw)] max-w-none px-8 pb-8 pt-8 sm:px-12 sm:pb-9 sm:pt-9"
         }`}
         initial={false}
         animate={{
@@ -92,18 +92,22 @@ export function IntroSequence({
         <motion.div
           className={`flex h-full min-h-0 items-center ${
             isBar
-              ? "flex-row justify-start gap-3"
-              : "min-h-[300px] flex-col justify-center gap-10 text-center sm:min-h-[360px] sm:gap-12"
+              ? "flex-row justify-start gap-2"
+              : "flex-col justify-center gap-5 text-center sm:gap-6"
           }`}
-          layout
+          layout={false}
         >
-          <motion.div layoutId="excelia-brand-logo" className="relative shrink-0 leading-none">
+          <motion.div
+            className="relative shrink-0 leading-none"
+            animate={{ opacity: isBar ? 0 : 1 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          >
             <Image
               src="/assets/Excelia_Logo.png"
               alt=""
-              width={420}
-              height={132}
-              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-[52px]" : "h-40 sm:h-48 md:h-56"}`}
+              width={520}
+              height={160}
+              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(10rem,28vw,14rem)] sm:h-[clamp(11rem,26vw,15rem)]"}`}
               priority
               aria-hidden
             />
@@ -113,36 +117,27 @@ export function IntroSequence({
             {!isBar && (
               <motion.div
                 key="titles"
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.38 }}
-                className="flex flex-col items-center gap-8 sm:gap-10"
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.35 }}
+                className="flex flex-col items-center gap-5 sm:gap-6"
               >
                 <Image
                   src="/assets/Excelia_Name.png"
                   alt="Excelia"
-                  width={560}
-                  height={112}
-                  className="h-[clamp(7rem,18vw,11rem)] w-auto sm:h-[clamp(8rem,20vw,13rem)]"
+                  width={640}
+                  height={128}
+                  className="h-[clamp(8.5rem,22vw,12.5rem)] w-auto sm:h-[clamp(9.5rem,20vw,13.5rem)]"
                   priority
                 />
-                <p className="max-w-xl px-2 font-[family-name:var(--font-instrument-serif)] text-[clamp(1.65rem,4.5vw,2.75rem)] italic leading-snug text-[var(--excelia-forest)]">
+                <p className="max-w-2xl px-2 font-[family-name:var(--font-instrument-serif)] text-[clamp(1.85rem,4.8vw,3rem)] italic leading-snug text-[var(--excelia-forest)]">
                   We grow Carribbean Roots
                 </p>
               </motion.div>
             )}
           </AnimatePresence>
         </motion.div>
-
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-[0.55] mix-blend-soft-light"
-          style={{
-            backgroundImage:
-              "radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.65), transparent 55%), radial-gradient(ellipse at 70% 80%, rgba(150,73,45,0.12), transparent 50%)",
-          }}
-        />
       </motion.div>
     </motion.div>
   );

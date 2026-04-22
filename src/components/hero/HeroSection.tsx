@@ -76,30 +76,28 @@ export function HeroSection({ onIntroFullyComplete }: HeroSectionProps) {
             className="grid w-full grid-cols-1 items-center gap-4 rounded-[16px] bg-white px-3 py-2.5 shadow-[0_12px_40px_rgba(45,77,54,0.12)] sm:px-5 md:grid-cols-[1fr_auto_1fr] md:gap-6 md:py-3"
             aria-label="Primary"
           >
-            <div className="flex min-h-[52px] justify-center md:justify-start md:items-center">
+            <div className="flex min-h-[56px] justify-center md:justify-start md:items-center">
               {navReveal ? (
                 <Link href="/" className="block leading-none">
-                  <motion.div layoutId="excelia-brand-logo" className="relative">
-                    <Image
-                      src="/assets/Excelia_Logo.png"
-                      alt="Excelia"
-                      width={240}
-                      height={68}
-                      className="h-[52px] w-auto sm:h-14"
-                      priority
-                    />
-                  </motion.div>
+                  <Image
+                    src="/assets/Excelia_Logo.png"
+                    alt="Excelia"
+                    width={280}
+                    height={78}
+                    className="h-14 w-auto sm:h-[4.25rem]"
+                    priority
+                  />
                 </Link>
               ) : (
                 <div
                   className="inline-block opacity-0"
                   aria-hidden
-                  style={{ width: 200, height: 52 }}
+                  style={{ width: 220, height: 56 }}
                 />
               )}
             </div>
 
-            <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-[family-name:var(--font-barlow)] text-[14px] font-medium text-[var(--excelia-forest)] md:justify-center">
+            <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-[family-name:var(--font-barlow)] text-[16px] font-medium text-[var(--excelia-forest)] md:justify-center">
               <li>
                 <a className="transition-opacity hover:opacity-70" href="#about">
                   About
@@ -126,7 +124,7 @@ export function HeroSection({ onIntroFullyComplete }: HeroSectionProps) {
             <div className="flex justify-center md:justify-end">
               <a
                 href="#shop"
-                className="inline-flex items-center justify-center rounded-full bg-[var(--excelia-rust)] px-8 py-3.5 font-[family-name:var(--font-barlow)] text-[15px] font-semibold text-white shadow-sm transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-md sm:px-10 sm:py-4 sm:text-base"
+                className="inline-flex items-center justify-center rounded-full bg-[var(--excelia-rust)] px-9 py-4 font-[family-name:var(--font-barlow)] text-[17px] font-semibold text-white shadow-sm transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-md sm:px-11 sm:py-[1.15rem] sm:text-lg"
               >
                 Shop Now
               </a>

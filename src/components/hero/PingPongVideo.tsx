@@ -17,40 +17,63 @@ export function PingPongVideo({ src, className }: PingPongVideoProps) {
     if (!video) return;
 
     let rafId = 0;
+    let reversing = false;
+    let lastTs = performance.now();
 
     const playForward = () => {
+      reversing = false;
       video.playbackRate = PLAYBACK_RATE;
       void video.play();
     };
 
-    const onEnded = () => {
-      let lastTs = performance.now();
+    const stepReverse = (now: number) => {
+      if (!reversing) return;
+      const dt = Math.min((now - lastTs) / 1000, 1 / 30);
+      lastTs = now;
+      const step = dt * PLAYBACK_RATE;
+      const next = video.currentTime - step;
 
-      const stepReverse = (now: number) => {
-        const dt = Math.min((now - lastTs) / 1000, 1 / 30);
-        lastTs = now;
-        const step = dt * PLAYBACK_RATE;
-        const next = video.currentTime - step;
+      if (next <= 0.02) {
+        video.currentTime = 0;
+        reversing = false;
+        playForward();
+        return;
+      }
 
-        if (next <= 0.03) {
-          video.currentTime = 0;
-          playForward();
-          return;
-        }
-
-        video.currentTime = next;
-        rafId = requestAnimationFrame(stepReverse);
-      };
-
+      video.currentTime = next;
       rafId = requestAnimationFrame(stepReverse);
     };
 
-    video.addEventListener("ended", onEnded);
+    const beginReverse = () => {
+      if (reversing) return;
+      reversing = true;
+      video.pause();
+      lastTs = performance.now();
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(stepReverse);
+    };
+
+    const onTimeUpdate = () => {
+      if (reversing) return;
+      const d = video.duration;
+      if (!Number.isFinite(d) || d <= 0) return;
+      if (video.currentTime >= d - 0.05) {
+        beginReverse();
+      }
+    };
+
+    const onEnded = () => {
+      if (!reversing) beginReverse();
+    };
+
     video.playbackRate = PLAYBACK_RATE;
+    video.addEventListener("timeupdate", onTimeUpdate);
+    video.addEventListener("ended", onEnded);
     void video.play();
 
     return () => {
       cancelAnimationFrame(rafId);
+      video.removeEventListener("timeupdate", onTimeUpdate);
       video.removeEventListener("ended", onEnded);
     };
   }, []);

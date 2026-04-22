@@ -11,32 +11,28 @@ import { useMemo, useRef } from "react";
 const STORY =
   "Excelia upcycles nutmeg co‑product into a refined soil topper—closing the loop on spice waste while feeding soil life, improving structure, and giving beds a distinctive, natural finish.";
 
-function StoryLetter({
-  char,
+function StoryWord({
+  children,
   progress,
   index,
   total,
 }: {
-  char: string;
+  children: string;
   progress: MotionValue<number>;
   index: number;
   total: number;
 }) {
   const start = index / Math.max(1, total);
-  const end = Math.min(1, (index + 1.4) / Math.max(1, total));
+  const end = Math.min(1, (index + 1.35) / Math.max(1, total));
   const opacity = useTransform(progress, [start, end], [0, 1]);
-  const y = useTransform(progress, [start, end], [22, 0]);
-
-  if (char === " ") {
-    return <span className="inline-block w-[0.25em]" />;
-  }
+  const y = useTransform(progress, [start, end], [18, 0]);
 
   return (
     <motion.span
       style={{ opacity, y }}
-      className="inline-block font-[family-name:var(--font-barlow)] text-lg font-medium leading-relaxed text-[var(--excelia-olive)] sm:text-xl md:text-[1.35rem]"
+      className="inline-block whitespace-nowrap font-[family-name:var(--font-barlow)] text-lg font-medium leading-relaxed text-[var(--excelia-olive)] sm:text-xl md:text-[1.35rem]"
     >
-      {char}
+      {children}
     </motion.span>
   );
 }
@@ -48,7 +44,7 @@ export function StorySection() {
     offset: ["start 0.88", "end 0.42"],
   });
 
-  const chars = useMemo(() => Array.from(STORY), []);
+  const words = useMemo(() => STORY.split(/\s+/).filter(Boolean), []);
 
   return (
     <section
@@ -56,18 +52,21 @@ export function StorySection() {
       id="story"
       className="scroll-mt-24 border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] px-4 py-20 sm:px-8 lg:px-12"
     >
-      <div className="mx-auto max-w-4xl">
-        <div className="flex flex-wrap gap-x-[0.12em] gap-y-1">
-          {chars.map((char, i) => (
-            <StoryLetter
-              key={`${char}-${i}`}
-              char={char}
-              progress={scrollYProgress}
-              index={i}
-              total={chars.length}
-            />
-          ))}
-        </div>
+      <div className="mx-auto max-w-4xl text-center">
+        <p className="inline-block max-w-full text-center">
+          <span className="inline-flex max-w-full flex-wrap justify-center gap-x-2 gap-y-3 [text-wrap:balance]">
+            {words.map((word, i) => (
+              <StoryWord
+                key={`${word}-${i}`}
+                progress={scrollYProgress}
+                index={i}
+                total={words.length}
+              >
+                {word}
+              </StoryWord>
+            ))}
+          </span>
+        </p>
       </div>
     </section>
   );
