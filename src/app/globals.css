@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+:root {
+  --excelia-rust: #96492d;
+  --excelia-cream: #ede9e2;
+  --excelia-forest: #2d4d36;
+  --excelia-gold: #e6c37c;
+  --excelia-olive: #665b32;
+  --excelia-stone: #b1ad99;
+  --excelia-tan: #9e8c65;
+  --excelia-wine: #731f21;
+  --background: var(--excelia-cream);
+  --foreground: var(--excelia-forest);
+}
+
+@theme inline {
+  --color-excelia-rust: var(--excelia-rust);
+  --color-excelia-cream: var(--excelia-cream);
+  --color-excelia-forest: var(--excelia-forest);
+  --color-excelia-gold: var(--excelia-gold);
+  --color-excelia-olive: var(--excelia-olive);
+  --color-excelia-stone: var(--excelia-stone);
+  --color-excelia-tan: var(--excelia-tan);
+  --color-excelia-wine: var(--excelia-wine);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-barlow);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-barlow), system-ui, sans-serif;
+}
