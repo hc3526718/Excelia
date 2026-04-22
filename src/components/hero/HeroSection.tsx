@@ -114,7 +114,7 @@ export function HeroSection() {
 
         <div className="mx-auto flex flex-1 flex-col items-center justify-center px-2 pb-8 pt-12 text-center sm:px-4 md:pt-16">
           <h1 className="max-w-5xl space-y-1 sm:space-y-2">
-            <span className="block font-[family-name:var(--font-barlow)] text-[clamp(1.75rem,4vw,3rem)] font-semibold uppercase tracking-[-4px] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
+            <span className="block font-[family-name:var(--font-barlow)] text-[clamp(1.75rem,4vw,3rem)] font-semibold tracking-[-4px] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
               Agency that makes your
             </span>
             <span className="block font-[family-name:var(--font-instrument-serif)] text-[clamp(2.75rem,12vw,84px)] italic leading-[0.95] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.35)]">
