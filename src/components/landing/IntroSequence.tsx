@@ -59,7 +59,7 @@ export function IntroSequence({
 
   return (
     <motion.div
-      className="pointer-events-none fixed inset-0 z-[90] flex justify-center pt-5 sm:pt-6"
+      className="pointer-events-none fixed inset-0 z-[19900] flex justify-center pt-4 sm:pt-5"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.32 }}
@@ -74,7 +74,7 @@ export function IntroSequence({
         className={`relative mx-auto overflow-hidden ${panelBase} ${
           isBar
             ? "mt-0 h-[78px] w-[min(72rem,calc(100vw-2rem))] px-4 py-2 sm:px-5"
-            : "mt-[min(10vh,72px)] w-[min(560px,88vw)] max-w-none px-5 pb-5 pt-5 sm:px-7 sm:pb-6 sm:pt-6"
+            : "mt-[min(6vh,48px)] w-[min(440px,86vw)] max-w-none px-4 pb-4 pt-4 sm:px-5 sm:pb-5 sm:pt-5"
         }`}
         initial={false}
         animate={{
@@ -92,7 +92,7 @@ export function IntroSequence({
           className={`flex h-full min-h-0 items-center ${
             isBar
               ? "flex-row justify-start gap-2"
-              : "flex-col justify-center gap-3 text-center sm:gap-4"
+              : "flex-col justify-center gap-2 text-center sm:gap-3"
           }`}
           layout={false}
         >
@@ -106,7 +106,7 @@ export function IntroSequence({
               alt=""
               width={520}
               height={160}
-              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(7rem,22vw,10rem)] sm:h-[clamp(7.5rem,20vw,11rem)]"}`}
+              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(5.25rem,18vw,7.5rem)] sm:h-[clamp(5.5rem,16vw,8rem)]"}`}
               priority
               aria-hidden
             />
@@ -120,17 +120,17 @@ export function IntroSequence({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.32 }}
-                className="flex flex-col items-center gap-3 sm:gap-4"
+                className="flex flex-col items-center gap-2 sm:gap-3"
               >
                 <Image
                   src="/assets/Excelia_Name.png"
                   alt="Excelia"
                   width={640}
                   height={128}
-                  className="h-[clamp(5.5rem,16vw,8.5rem)] w-auto sm:h-[clamp(6rem,14vw,9.5rem)]"
+                  className="h-[clamp(4rem,12vw,6.25rem)] w-auto sm:h-[clamp(4.25rem,11vw,7rem)]"
                   priority
                 />
-                <p className="max-w-xl px-1 font-[family-name:var(--font-instrument-serif)] text-[clamp(1.35rem,3.8vw,2.25rem)] italic leading-snug text-[var(--excelia-forest)]">
+                <p className="max-w-xl px-1 font-[family-name:var(--font-instrument-serif)] text-[clamp(1.1rem,3.2vw,1.75rem)] italic leading-snug text-[var(--excelia-forest)]">
                   We grow Carribbean Roots
                 </p>
               </motion.div>

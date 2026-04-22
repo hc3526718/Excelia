@@ -58,7 +58,7 @@ export function HeroSection({ onIntroFullyComplete }: HeroSectionProps) {
       </AnimatePresence>
 
       <motion.header
-        className="fixed left-0 right-0 top-5 z-[60] flex justify-center px-4 sm:top-6 sm:px-6 lg:px-10"
+        className="fixed left-0 right-0 top-5 z-[20000] flex justify-center px-4 sm:top-6 sm:px-6 lg:px-10"
         initial={false}
         animate={{
           opacity: navReveal ? 1 : 0,
@@ -144,11 +144,11 @@ export function HeroSection({ onIntroFullyComplete }: HeroSectionProps) {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           style={{ pointerEvents: showBody ? "auto" : "none" }}
         >
-          <h1 className="max-w-5xl space-y-0 sm:space-y-0">
+          <h1 className="max-w-5xl space-y-0 leading-[1.05] sm:leading-[1.02]">
             <span className="block font-[family-name:var(--font-barlow)] text-[clamp(2.15rem,5.2vw,3.75rem)] font-semibold tracking-[-4px] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
               Soil that honours every nutmeg
             </span>
-            <span className="mt-1 block font-[family-name:var(--font-instrument-serif)] text-[clamp(3.25rem,13vw,96px)] italic leading-[0.92] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.35)] md:mt-0 md:leading-[0.9]">
+            <span className="mt-0 block font-[family-name:var(--font-instrument-serif)] text-[clamp(3.25rem,13vw,96px)] italic leading-[0.88] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.35)] md:leading-[0.86]">
               turning waste into growth
             </span>
           </h1>
