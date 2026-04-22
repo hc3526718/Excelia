@@ -18,7 +18,7 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "Excelia",
   description:
-    "Premium soil topper experience — Excelia brings refined ground cover for creators and growers.",
+    "Short-form video editing for influencers, creators, and brands.",
 };
 
 export default function RootLayout({
