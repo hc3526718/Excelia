@@ -11,7 +11,6 @@ const MORPH_MS = 1300;
 const BAR_SETTLE_MS = 200;
 const HANDOFF_MS = 560;
 
-/** Matches `HeroSection` nav: white + soft lift */
 const panelBase =
   "rounded-2xl border border-black/[0.06] bg-white shadow-[0_12px_40px_rgba(45,77,54,0.12)]";
 
@@ -60,7 +59,7 @@ export function IntroSequence({
 
   return (
     <motion.div
-      className="pointer-events-none fixed inset-0 z-[90] flex justify-center pt-6 sm:pt-8"
+      className="pointer-events-none fixed inset-0 z-[90] flex justify-center pt-5 sm:pt-6"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.32 }}
@@ -75,7 +74,7 @@ export function IntroSequence({
         className={`relative mx-auto overflow-hidden ${panelBase} ${
           isBar
             ? "mt-0 h-[78px] w-[min(72rem,calc(100vw-2rem))] px-4 py-2 sm:px-5"
-            : "mt-[min(14vh,100px)] w-[min(920px,94vw)] max-w-none px-8 pb-8 pt-8 sm:px-12 sm:pb-9 sm:pt-9"
+            : "mt-[min(10vh,72px)] w-[min(560px,88vw)] max-w-none px-5 pb-5 pt-5 sm:px-7 sm:pb-6 sm:pt-6"
         }`}
         initial={false}
         animate={{
@@ -93,7 +92,7 @@ export function IntroSequence({
           className={`flex h-full min-h-0 items-center ${
             isBar
               ? "flex-row justify-start gap-2"
-              : "flex-col justify-center gap-5 text-center sm:gap-6"
+              : "flex-col justify-center gap-3 text-center sm:gap-4"
           }`}
           layout={false}
         >
@@ -107,7 +106,7 @@ export function IntroSequence({
               alt=""
               width={520}
               height={160}
-              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(10rem,28vw,14rem)] sm:h-[clamp(11rem,26vw,15rem)]"}`}
+              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(7rem,22vw,10rem)] sm:h-[clamp(7.5rem,20vw,11rem)]"}`}
               priority
               aria-hidden
             />
@@ -117,21 +116,21 @@ export function IntroSequence({
             {!isBar && (
               <motion.div
                 key="titles"
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.35 }}
-                className="flex flex-col items-center gap-5 sm:gap-6"
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.32 }}
+                className="flex flex-col items-center gap-3 sm:gap-4"
               >
                 <Image
                   src="/assets/Excelia_Name.png"
                   alt="Excelia"
                   width={640}
                   height={128}
-                  className="h-[clamp(8.5rem,22vw,12.5rem)] w-auto sm:h-[clamp(9.5rem,20vw,13.5rem)]"
+                  className="h-[clamp(5.5rem,16vw,8.5rem)] w-auto sm:h-[clamp(6rem,14vw,9.5rem)]"
                   priority
                 />
-                <p className="max-w-2xl px-2 font-[family-name:var(--font-instrument-serif)] text-[clamp(1.85rem,4.8vw,3rem)] italic leading-snug text-[var(--excelia-forest)]">
+                <p className="max-w-xl px-1 font-[family-name:var(--font-instrument-serif)] text-[clamp(1.35rem,3.8vw,2.25rem)] italic leading-snug text-[var(--excelia-forest)]">
                   We grow Carribbean Roots
                 </p>
               </motion.div>

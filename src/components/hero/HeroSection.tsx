@@ -57,81 +57,86 @@ export function HeroSection({ onIntroFullyComplete }: HeroSectionProps) {
         )}
       </AnimatePresence>
 
-      <div className="relative z-10 flex flex-1 flex-col px-4 pb-16 pt-6 sm:px-6 lg:px-10">
-        <motion.header
-          className="mx-auto w-full max-w-6xl"
-          initial={false}
-          animate={{
-            opacity: navReveal ? 1 : 0,
-          }}
-          transition={{
-            duration: 0.55,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          style={{
-            pointerEvents: navReveal ? "auto" : "none",
-          }}
+      <motion.header
+        className="fixed left-0 right-0 top-5 z-[60] flex justify-center px-4 sm:top-6 sm:px-6 lg:px-10"
+        initial={false}
+        animate={{
+          opacity: navReveal ? 1 : 0,
+        }}
+        transition={{
+          duration: 0.55,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        style={{
+          pointerEvents: navReveal ? "auto" : "none",
+        }}
+        aria-hidden={!navReveal}
+      >
+        <nav
+          className="grid w-full max-w-6xl grid-cols-1 items-center gap-4 rounded-[16px] bg-white px-3 py-2.5 shadow-[0_12px_40px_rgba(45,77,54,0.12)] sm:px-5 md:grid-cols-[1fr_auto_1fr] md:gap-6 md:py-3"
+          aria-label="Primary"
         >
-          <nav
-            className="grid w-full grid-cols-1 items-center gap-4 rounded-[16px] bg-white px-3 py-2.5 shadow-[0_12px_40px_rgba(45,77,54,0.12)] sm:px-5 md:grid-cols-[1fr_auto_1fr] md:gap-6 md:py-3"
-            aria-label="Primary"
-          >
-            <div className="flex min-h-[56px] justify-center md:justify-start md:items-center">
-              {navReveal ? (
-                <Link href="/" className="block leading-none">
-                  <Image
-                    src="/assets/Excelia_Logo.png"
-                    alt="Excelia"
-                    width={280}
-                    height={78}
-                    className="h-14 w-auto sm:h-[4.25rem]"
-                    priority
-                  />
-                </Link>
-              ) : (
-                <div
-                  className="inline-block opacity-0"
-                  aria-hidden
-                  style={{ width: 220, height: 56 }}
+          <div className="flex min-h-[56px] justify-center md:justify-start md:items-center">
+            {navReveal ? (
+              <Link href="/" className="block leading-none">
+                <Image
+                  src="/assets/Excelia_Logo.png"
+                  alt="Excelia"
+                  width={280}
+                  height={78}
+                  className="h-14 w-auto sm:h-[4.25rem]"
+                  priority
                 />
-              )}
-            </div>
+              </Link>
+            ) : (
+              <div
+                className="inline-block opacity-0"
+                aria-hidden
+                style={{ width: 220, height: 56 }}
+              />
+            )}
+          </div>
 
-            <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-[family-name:var(--font-barlow)] text-[16px] font-medium text-[var(--excelia-forest)] md:justify-center">
-              <li>
-                <a className="transition-opacity hover:opacity-70" href="#about">
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  className="transition-opacity hover:opacity-70"
-                  href="#mission"
-                >
-                  Mission
-                </a>
-              </li>
-              <li>
-                <a
-                  className="transition-opacity hover:opacity-70"
-                  href="#contact"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-
-            <div className="flex justify-center md:justify-end">
-              <a
-                href="#shop"
-                className="inline-flex items-center justify-center rounded-full bg-[var(--excelia-rust)] px-9 py-4 font-[family-name:var(--font-barlow)] text-[17px] font-semibold text-white shadow-sm transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-md sm:px-11 sm:py-[1.15rem] sm:text-lg"
-              >
-                Shop Now
+          <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-[family-name:var(--font-barlow)] text-[16px] font-medium text-[var(--excelia-forest)] md:justify-center">
+            <li>
+              <a className="transition-opacity hover:opacity-70" href="#about">
+                About
               </a>
-            </div>
-          </nav>
-        </motion.header>
+            </li>
+            <li>
+              <a
+                className="transition-opacity hover:opacity-70"
+                href="#mission"
+              >
+                Mission
+              </a>
+            </li>
+            <li>
+              <a
+                className="transition-opacity hover:opacity-70"
+                href="#contact"
+              >
+                Contact
+              </a>
+            </li>
+          </ul>
 
+          <div className="flex justify-center md:justify-end">
+            <a
+              href="#shop"
+              className="inline-flex items-center justify-center rounded-full bg-[var(--excelia-rust)] px-9 py-4 font-[family-name:var(--font-barlow)] text-[17px] font-semibold text-white shadow-sm transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-md sm:px-11 sm:py-[1.15rem] sm:text-lg"
+            >
+              Shop Now
+            </a>
+          </div>
+        </nav>
+      </motion.header>
+
+      <div
+        className={`relative z-10 flex flex-1 flex-col px-4 pb-16 pt-6 sm:px-6 lg:px-10 ${
+          navReveal ? "pt-[6.25rem] sm:pt-[7rem]" : ""
+        }`}
+      >
         <motion.div
           className="mx-auto flex flex-1 flex-col items-center justify-center px-2 pb-8 pt-12 text-center sm:px-4 md:pt-16"
           initial={false}
