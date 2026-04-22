@@ -1,38 +1,41 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useCallback, useState } from "react";
+import { IntroSequence } from "@/components/landing/IntroSequence";
 import { PingPongVideo } from "./PingPongVideo";
-
-function PlayIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden
-    >
-      <path d="M8 5v14l11-7L8 5z" />
-    </svg>
-  );
-}
 
 const VIDEO_MASK =
   "linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 52%, rgba(255,255,255,0.94) 62%, rgba(255,255,255,0.78) 74%, rgba(255,255,255,0.48) 86%, rgba(255,255,255,0.2) 94%, rgba(255,255,255,0) 100%)";
 
 type HeroSectionProps = {
-  introDone: boolean;
+  onIntroFullyComplete: () => void;
 };
 
-export function HeroSection({ introDone }: HeroSectionProps) {
+export function HeroSection({ onIntroFullyComplete }: HeroSectionProps) {
+  const [introOverlayOpen, setIntroOverlayOpen] = useState(true);
+  const [navReveal, setNavReveal] = useState(false);
+
+  const handleMorphComplete = useCallback(() => {
+    setNavReveal(true);
+  }, []);
+
+  const handleIntroComplete = useCallback(() => {
+    setIntroOverlayOpen(false);
+    onIntroFullyComplete();
+  }, [onIntroFullyComplete]);
+
+  const showBody = !introOverlayOpen;
+
   return (
     <section
       id="about"
-      className="relative isolate flex min-h-[90vh] flex-col overflow-hidden bg-[var(--excelia-cream)]"
+      className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-[var(--excelia-cream)]"
     >
       <div
-        className="pointer-events-none absolute inset-0 z-0"
+        className="pointer-events-none absolute inset-0 z-0 min-h-[100svh]"
         style={{
           maskImage: VIDEO_MASK,
           WebkitMaskImage: VIDEO_MASK,
@@ -40,26 +43,49 @@ export function HeroSection({ introDone }: HeroSectionProps) {
       >
         <PingPongVideo
           src="/assets/3AgNzzqv3gbwXg9WC8wI5_output.mp4"
-          className="h-full w-full object-cover"
+          className="min-h-[100svh] h-full w-full object-cover"
         />
       </div>
 
+      <AnimatePresence>
+        {introOverlayOpen && (
+          <IntroSequence
+            key="intro"
+            onMorphComplete={handleMorphComplete}
+            onComplete={handleIntroComplete}
+          />
+        )}
+      </AnimatePresence>
+
       <div className="relative z-10 flex flex-1 flex-col px-4 pb-16 pt-6 sm:px-6 lg:px-10">
-        <header className="mx-auto w-full max-w-6xl">
+        <motion.header
+          className="mx-auto w-full max-w-6xl"
+          initial={false}
+          animate={{
+            opacity: navReveal ? 1 : 0,
+          }}
+          transition={{
+            duration: 0.55,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          style={{
+            pointerEvents: navReveal ? "auto" : "none",
+          }}
+        >
           <nav
             className="grid w-full grid-cols-1 items-center gap-4 rounded-[16px] bg-white px-3 py-2.5 shadow-[0_12px_40px_rgba(45,77,54,0.12)] sm:px-5 md:grid-cols-[1fr_auto_1fr] md:gap-6 md:py-3"
             aria-label="Primary"
           >
             <div className="flex min-h-[52px] justify-center md:justify-start md:items-center">
-              {introDone ? (
+              {navReveal ? (
                 <Link href="/" className="block leading-none">
                   <motion.div layoutId="excelia-brand-logo" className="relative">
                     <Image
                       src="/assets/Excelia_Logo.png"
                       alt="Excelia"
-                      width={200}
-                      height={56}
-                      className="h-12 w-auto sm:h-14"
+                      width={240}
+                      height={68}
+                      className="h-[52px] w-auto sm:h-14"
                       priority
                     />
                   </motion.div>
@@ -68,7 +94,7 @@ export function HeroSection({ introDone }: HeroSectionProps) {
                 <div
                   className="inline-block opacity-0"
                   aria-hidden
-                  style={{ width: 200, height: 56 }}
+                  style={{ width: 200, height: 52 }}
                 />
               )}
             </div>
@@ -106,32 +132,31 @@ export function HeroSection({ introDone }: HeroSectionProps) {
               </a>
             </div>
           </nav>
-        </header>
+        </motion.header>
 
-        <div className="mx-auto flex flex-1 flex-col items-center justify-center px-2 pb-8 pt-12 text-center sm:px-4 md:pt-16">
-          <h1 className="max-w-5xl space-y-1 sm:space-y-2">
-            <span className="block font-[family-name:var(--font-barlow)] text-[clamp(1.75rem,4vw,3rem)] font-semibold tracking-[-4px] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
+        <motion.div
+          className="mx-auto flex flex-1 flex-col items-center justify-center px-2 pb-8 pt-12 text-center sm:px-4 md:pt-16"
+          initial={false}
+          animate={{ opacity: showBody ? 1 : 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          style={{ pointerEvents: showBody ? "auto" : "none" }}
+        >
+          <h1 className="max-w-5xl space-y-0 sm:space-y-0">
+            <span className="block font-[family-name:var(--font-barlow)] text-[clamp(2.15rem,5.2vw,3.75rem)] font-semibold tracking-[-4px] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
               Soil that honours every nutmeg
             </span>
-            <span className="block font-[family-name:var(--font-instrument-serif)] text-[clamp(2.75rem,12vw,84px)] italic leading-[0.95] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.35)]">
-              waste turned into growth
+            <span className="mt-1 block font-[family-name:var(--font-instrument-serif)] text-[clamp(3.25rem,13vw,96px)] italic leading-[0.92] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.35)] md:mt-0 md:leading-[0.9]">
+              turning waste into growth
             </span>
           </h1>
 
-          <p className="mx-auto mt-8 max-w-2xl font-[family-name:var(--font-barlow)] text-[18px] font-medium leading-relaxed text-white/95 drop-shadow-[0_2px_16px_rgba(0,0,0,0.35)]">
-            Excelia upcycles nutmeg co‑product into a refined soil topper—closing
-            the loop on spice waste while feeding soil life, improving structure,
-            and giving beds a distinctive, natural finish.
-          </p>
-
           <a
             href="#products"
-            className="group mt-10 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 font-[family-name:var(--font-barlow)] text-base font-semibold text-[var(--excelia-forest)] shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_20px_48px_rgba(0,0,0,0.22)]"
+            className="mt-12 inline-flex items-center justify-center rounded-full bg-white px-11 py-5 font-[family-name:var(--font-barlow)] text-lg font-semibold text-[var(--excelia-forest)] shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_20px_48px_rgba(0,0,0,0.22)] sm:px-12 sm:py-[1.35rem] sm:text-xl"
           >
-            <PlayIcon className="size-5 text-[var(--excelia-rust)] transition-transform group-hover:scale-110" />
-            Explore the topper
+            Start from the topper
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
