@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { UnifiedContactForm } from "@/components/contact/UnifiedContactForm";
 import { PAGE_CONTAINER_CLASS } from "@/components/footer/ExceliaFooter";
 import { PageGreenBand } from "@/components/layout/PageGreenBand";
@@ -33,27 +32,6 @@ export default function ContactPage() {
           opens with a draft you can edit before it goes.
         </p>
         <UnifiedContactForm />
-
-        <div className="mt-16 border-t border-[var(--excelia-stone)]/35 pt-10">
-          <p className="font-[family-name:var(--font-barlow)] text-[13px] leading-relaxed text-[var(--excelia-olive)]">
-            We list a UK registered office or a Grenada operational line only once
-            the details are confirmed. No placeholder addresses on the site.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href="/about"
-              className="inline-flex rounded-full border border-[var(--excelia-forest)]/40 px-6 py-3 font-[family-name:var(--font-barlow)] text-sm font-semibold text-[var(--excelia-forest)] transition-colors hover:bg-[var(--excelia-forest)]/08"
-            >
-              About Sister
-            </Link>
-            <Link
-              href="/shop"
-              className="inline-flex rounded-full bg-[var(--excelia-rust)] px-6 py-3 font-[family-name:var(--font-barlow)] text-sm font-semibold text-white shadow-sm transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-md"
-            >
-              Shop
-            </Link>
-          </div>
-        </div>
       </div>
     </PageShell>
   );

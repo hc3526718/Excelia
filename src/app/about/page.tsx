@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { HeritageRule } from "@/components/about/HeritageRule";
 import { PAGE_CONTAINER_CLASS } from "@/components/footer/ExceliaFooter";
 import { PageGreenBand } from "@/components/layout/PageGreenBand";
@@ -72,14 +71,17 @@ export default function AboutPage() {
 
         <HeritageRule label="Nutmeg heritage" />
 
-        <PageGreenBand className="my-14 sm:my-16">
+        <section
+          aria-labelledby="act2-heading"
+          className="mt-14 border-t border-[var(--excelia-stone)]/35 pt-14 sm:mt-16 sm:pt-16"
+        >
           <h2
             id="act2-heading"
-            className="font-[family-name:var(--font-instrument-serif)] text-3xl italic sm:text-[2.25rem]"
+            className="font-[family-name:var(--font-instrument-serif)] text-3xl italic text-[var(--excelia-forest)] sm:text-[2.25rem]"
           >
             The legacy
           </h2>
-          <div className="mt-8 space-y-5 font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-white/92 sm:text-base">
+          <div className="mt-8 space-y-5 font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-forest)] sm:text-base">
             <p>
               From <strong>1930s</strong> estate life in Grenada to gardens in
               the United Kingdom today, one thread stays steady: respect for the
@@ -93,18 +95,21 @@ export default function AboutPage() {
               inherited, not borrowed.
             </p>
           </div>
-        </PageGreenBand>
+        </section>
 
         <HeritageRule />
 
-        <PageGreenBand className="my-6 sm:my-8">
+        <section
+          aria-labelledby="act3-heading"
+          className="mt-14 border-t border-[var(--excelia-stone)]/35 pt-14 sm:mt-16 sm:pt-16"
+        >
           <h2
             id="act3-heading"
-            className="font-[family-name:var(--font-instrument-serif)] text-3xl italic sm:text-[2.25rem]"
+            className="font-[family-name:var(--font-instrument-serif)] text-3xl italic text-[var(--excelia-forest)] sm:text-[2.25rem]"
           >
             Carrying it forward
           </h2>
-          <div className="mt-8 space-y-5 font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-white/92 sm:text-base">
+          <div className="mt-8 space-y-5 font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-forest)] sm:text-base">
             <p>
               I did not sketch this lineage on a whiteboard. The name meant
               something in Crochu before it appeared online. Excelia exists
@@ -118,22 +123,7 @@ export default function AboutPage() {
               work happening now is the whole reason to bother.
             </p>
           </div>
-        </PageGreenBand>
-
-        <div className="mt-14 flex flex-wrap gap-4 border-t border-[var(--excelia-stone)]/35 pt-10">
-          <Link
-            href="/our-impact"
-            className="inline-flex rounded-full border border-[var(--excelia-forest)]/40 px-6 py-3 font-[family-name:var(--font-barlow)] text-sm font-semibold text-[var(--excelia-forest)] transition-colors hover:bg-[var(--excelia-forest)]/08"
-          >
-            Why Excelia
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-flex rounded-full bg-[var(--excelia-rust)] px-6 py-3 font-[family-name:var(--font-barlow)] text-sm font-semibold text-white shadow-sm transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-md"
-          >
-            Contact
-          </Link>
-        </div>
+        </section>
       </div>
     </PageShell>
   );

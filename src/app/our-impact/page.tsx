@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { HeritageRule } from "@/components/about/HeritageRule";
 import { PAGE_CONTAINER_CLASS } from "@/components/footer/ExceliaFooter";
 import { PageGreenBand } from "@/components/layout/PageGreenBand";
@@ -54,14 +53,14 @@ export default function OurImpactPage() {
       </PageGreenBand>
 
       <div className={`${PAGE_CONTAINER_CLASS} pb-28 pt-12 lg:pt-16`}>
-        <PageGreenBand className="my-4 sm:my-6">
+        <section aria-labelledby="problem-heading">
           <h2
             id="problem-heading"
-            className="font-[family-name:var(--font-instrument-serif)] text-3xl italic sm:text-[2.25rem]"
+            className="font-[family-name:var(--font-instrument-serif)] text-3xl italic text-[var(--excelia-forest)] sm:text-[2.25rem]"
           >
             Conventional mulches and their limits
           </h2>
-          <div className="mt-8 space-y-5 font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-white/92 sm:text-base">
+          <div className="mt-8 space-y-5 font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-forest)] sm:text-base">
             <p>
               <strong>Gravel</strong> rides out of quarries on diesel, ships
               long distances, and sits on beds without feeding soil life.
@@ -79,7 +78,7 @@ export default function OurImpactPage() {
               home plot, not a motorway verge.
             </p>
           </div>
-        </PageGreenBand>
+        </section>
 
         <HeritageRule label="Botanical heritage" />
 
@@ -123,14 +122,17 @@ export default function OurImpactPage() {
 
         <HeritageRule />
 
-        <PageGreenBand className="my-14 sm:my-16">
+        <section
+          aria-labelledby="community-heading"
+          className="mt-14 border-t border-[var(--excelia-stone)]/35 pt-14 sm:mt-16 sm:pt-16"
+        >
           <h2
             id="community-heading"
-            className="font-[family-name:var(--font-instrument-serif)] text-3xl italic sm:text-[2.25rem]"
+            className="font-[family-name:var(--font-instrument-serif)] text-3xl italic text-[var(--excelia-forest)] sm:text-[2.25rem]"
           >
             Community and heritage
           </h2>
-          <div className="mt-8 space-y-5 font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-white/92 sm:text-base">
+          <div className="mt-8 space-y-5 font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-forest)] sm:text-base">
             <p>
               In <strong>Crochu, St. Andrew&apos;s</strong>, farming is concrete
               work on steep plots. Excelia honours that by sourcing with care,
@@ -144,7 +146,7 @@ export default function OurImpactPage() {
               the crop our name rests on.
             </p>
           </div>
-        </PageGreenBand>
+        </section>
 
         <figure className="relative mt-10 overflow-hidden rounded-2xl border border-[var(--excelia-stone)]/45 bg-[var(--excelia-forest)]/08 shadow-[0_22px_55px_rgba(45,77,54,0.12)]">
           <div className="relative aspect-[16/10] w-full max-h-[420px] sm:max-h-[480px]">
@@ -187,21 +189,6 @@ export default function OurImpactPage() {
             GCNA value diagram from slide eight: shell to garden, kernel to spice
           </div>
         </section>
-
-        <div className="mt-16 flex flex-wrap gap-4 border-t border-[var(--excelia-stone)]/35 pt-10">
-          <Link
-            href="/about"
-            className="inline-flex rounded-full border border-[var(--excelia-forest)]/40 px-6 py-3 font-[family-name:var(--font-barlow)] text-sm font-semibold text-[var(--excelia-forest)] transition-colors hover:bg-[var(--excelia-forest)]/08"
-          >
-            The story of Sister
-          </Link>
-          <Link
-            href="/shop"
-            className="inline-flex rounded-full bg-[var(--excelia-rust)] px-6 py-3 font-[family-name:var(--font-barlow)] text-sm font-semibold text-white shadow-sm transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-md"
-          >
-            Shop nutmeg shells
-          </Link>
-        </div>
       </div>
     </PageShell>
   );
