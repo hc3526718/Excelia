@@ -30,7 +30,7 @@ function StoryWord({
   return (
     <motion.span
       style={{ opacity, y }}
-      className="inline-block whitespace-nowrap font-[family-name:var(--font-barlow)] text-[clamp(1.25rem,3.6vw,1.85rem)] font-semibold leading-snug tracking-[-0.02em] text-[var(--excelia-forest)] sm:text-[clamp(1.35rem,3.2vw,2rem)] md:text-[clamp(1.45rem,2.8vw,2.15rem)]"
+      className="inline-block whitespace-nowrap font-[family-name:var(--font-barlow)] text-[clamp(1rem,3.4vw,1.85rem)] font-semibold leading-snug tracking-[-0.02em] text-[var(--excelia-forest)] sm:text-[clamp(1.35rem,3.2vw,2rem)] md:text-[clamp(1.45rem,2.8vw,2.15rem)]"
     >
       {children}
     </motion.span>
@@ -50,7 +50,7 @@ export function StorySection() {
     <section
       ref={ref}
       id="story"
-      className="relative isolate z-0 scroll-mt-24 border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] px-4 py-12 sm:px-8 sm:py-14 lg:px-12"
+      className="relative isolate z-0 scroll-mt-20 border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] px-3 py-10 sm:scroll-mt-24 sm:px-8 sm:py-14 lg:px-12"
     >
       <div className="mx-auto max-w-5xl text-center">
         <p className="inline-block max-w-full text-center">
