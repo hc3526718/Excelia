@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 type ContactStickerProps = {
   src: string;
   alt: string;
@@ -11,6 +9,10 @@ type ContactStickerProps = {
   yOffsetPx?: number;
 };
 
+/**
+ * Plain <img> keeps Next/Image’s layout wrapper from drawing placeholder/sizing boxes
+ * (the semi-transparent “squares” behind tilted stickers on green backgrounds).
+ */
 export function ContactSticker({
   src,
   alt,
@@ -25,15 +27,17 @@ export function ContactSticker({
         transform: `translateY(${yOffsetPx}px) rotate(${rotateDeg}deg)`,
       }}
     >
-      <Image
+      {/* eslint-disable-next-line @next/next/no-img-element -- intentional to avoid Next/Image wrapper backgrounds */}
+      <img
         src={src}
         alt={alt}
         width={width}
         height={width}
-        className="h-auto max-w-none select-none"
-        sizes={`${width}px`}
+        className="block h-auto max-w-none select-none bg-transparent"
         style={{ width: `${width}px`, height: "auto" }}
         draggable={false}
+        loading="lazy"
+        decoding="async"
       />
     </span>
   );
