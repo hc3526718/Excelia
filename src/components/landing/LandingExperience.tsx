@@ -4,13 +4,18 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { type FormEvent, useCallback, useState } from "react";
 import { ContactSticker } from "@/components/contact/ContactSticker";
-import { ExceliaWordmark } from "@/components/brand/ExceliaWordmark";
 import { SiteHeader } from "@/components/hero/SiteHeader";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { FeaturedProducts } from "@/components/products/FeaturedProducts";
 import { MissionSection } from "@/components/mission/MissionSection";
 import { PillarsSection } from "@/components/pillars/PillarsSection";
 import { StorySection } from "@/components/story/StorySection";
+import {
+  IconInstagram,
+  IconTikTok,
+  IconX,
+  IconYouTube,
+} from "@/components/footer/SocialIcons";
 
 const STICKERS = [
   {
@@ -43,16 +48,42 @@ const FOOTER_EXPLORE_LINKS = [
   { href: "#shop", label: "Shop Now" },
 ];
 
+const FOOTER_LEGAL_LINKS = [
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms-of-service", label: "Terms of Service" },
+  { href: "/shipping", label: "Shipping" },
+  { href: "/returns", label: "Returns" },
+];
+
+const FOOTER_SOCIAL = [
+  {
+    href: "https://www.tiktok.com/",
+    label: "TikTok",
+    Icon: IconTikTok,
+  },
+  {
+    href: "https://www.instagram.com/",
+    label: "Instagram",
+    Icon: IconInstagram,
+  },
+  {
+    href: "https://www.youtube.com/",
+    label: "YouTube",
+    Icon: IconYouTube,
+  },
+  {
+    href: "https://x.com/",
+    label: "X",
+    Icon: IconX,
+  },
+];
+
 function SiteFooterExplore() {
   return (
     <div className="border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] px-3 pb-12 pt-10 text-[var(--excelia-forest)] sm:px-8 sm:pb-14 sm:pt-12">
       <div className="mx-auto max-w-6xl">
-        <div className="w-full px-1 sm:px-4">
-          <ExceliaWordmark className="mx-auto block h-auto w-full max-h-[min(38vh,440px)] max-w-[min(96vw,1100px)] object-contain object-center" />
-        </div>
-
         <nav
-          className="mt-10 border-t border-[var(--excelia-stone)]/35 pt-8 font-[family-name:var(--font-barlow)] text-xs text-[var(--excelia-forest)] sm:mt-12 sm:text-sm"
+          className="font-[family-name:var(--font-barlow)] text-xs text-[var(--excelia-forest)] sm:text-sm"
           aria-label="Explore"
         >
           <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--excelia-gold)] sm:text-xs">
@@ -71,6 +102,40 @@ function SiteFooterExplore() {
             ))}
           </ul>
         </nav>
+
+        <div className="mt-10 border-t border-[var(--excelia-stone)]/35 pt-8">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--excelia-gold)] sm:text-xs">
+            Legal
+          </p>
+          <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2 font-[family-name:var(--font-barlow)] text-xs sm:text-sm">
+            {FOOTER_LEGAL_LINKS.map((item) => (
+              <li key={item.href}>
+                <Link
+                  className="text-[var(--excelia-forest)] opacity-90 underline-offset-4 transition-opacity hover:opacity-70 hover:underline"
+                  href={item.href}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-[var(--excelia-stone)]/35 pt-8">
+          <p className="sr-only">Social</p>
+          {FOOTER_SOCIAL.map(({ href, label, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="inline-flex size-10 items-center justify-center rounded-full text-[var(--excelia-forest)] opacity-85 transition-[opacity,background] hover:bg-black/[0.05] hover:opacity-100 sm:size-11"
+            >
+              <Icon className="size-5 sm:size-[1.35rem]" />
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );

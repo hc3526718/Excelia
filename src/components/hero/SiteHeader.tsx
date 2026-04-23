@@ -77,7 +77,7 @@ export function SiteHeader({ visible }: SiteHeaderProps) {
       aria-hidden={!visible}
     >
       <nav
-        className="grid w-full max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-x-2 gap-y-1 rounded-[14px] bg-white px-2 py-1.5 shadow-[0_12px_40px_rgba(45,77,54,0.14)] sm:gap-x-3 sm:rounded-[16px] sm:px-4 sm:py-2.5 md:px-5 md:py-3"
+        className="grid w-full max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-x-2 gap-y-1 rounded-[14px] bg-white px-2 py-2 shadow-[0_12px_40px_rgba(45,77,54,0.14)] sm:gap-x-3 sm:rounded-[16px] sm:px-4 sm:py-3 md:px-5 md:py-3.5"
         aria-label="Primary"
       >
         <ul className="flex min-w-0 flex-wrap items-center justify-self-start gap-x-2 gap-y-0.5 font-[family-name:var(--font-barlow)] text-[10px] font-semibold leading-tight sm:gap-x-5 sm:text-sm md:text-[15px]">
@@ -109,12 +109,12 @@ export function SiteHeader({ visible }: SiteHeaderProps) {
 
         <Link
           href="/"
-          className="relative z-[1] mx-auto block max-w-[min(52vw,220px)] shrink-0 translate-y-[1px] sm:max-w-[min(44vw,280px)] md:max-w-[320px]"
+          className="relative z-[1] mx-auto block max-w-[min(72vw,420px)] shrink-0 translate-y-[1px] sm:max-w-[min(62vw,480px)] md:max-w-[520px]"
           aria-label="Excelia home"
         >
           <ExceliaWordmark
             priority
-            className="mx-auto block h-[1.75rem] w-auto max-w-full sm:h-12 md:h-14 lg:h-[3.5rem] xl:h-16"
+            className="mx-auto block h-[2.35rem] w-auto max-w-full sm:h-16 md:h-[4.75rem] lg:h-[5.25rem] xl:h-[5.75rem]"
           />
         </Link>
 
