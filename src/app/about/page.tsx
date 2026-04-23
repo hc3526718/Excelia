@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { HeritageRule } from "@/components/about/HeritageRule";
-import { PAGE_CONTAINER_CLASS } from "@/components/footer/ExceliaFooter";
 import { PageGreenBand } from "@/components/layout/PageGreenBand";
+import { PageSection } from "@/components/layout/PageSection";
 import { PageShell } from "@/components/layout/PageShell";
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function AboutPage() {
         </p>
       </PageGreenBand>
 
-      <div className={`${PAGE_CONTAINER_CLASS} pb-24 pt-12 lg:pt-16`}>
+      <PageSection className="pt-12 lg:pt-16">
         <div className="relative mt-2 overflow-hidden rounded-2xl border border-[var(--excelia-stone)]/40 bg-[#3d2f28] shadow-[0_28px_80px_rgba(45,77,54,0.2)]">
           <div
             className="absolute inset-0 opacity-[0.14] mix-blend-overlay"
@@ -52,8 +52,10 @@ export default function AboutPage() {
             work.
           </p>
         </div>
+      </PageSection>
 
-        <div className="prose prose-neutral mt-10 max-w-none font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-forest)] prose-p:mb-5 sm:text-base">
+      <PageSection className="mt-10">
+        <div className="prose prose-neutral max-w-none font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-forest)] prose-p:mb-5 sm:text-base">
           <p className="text-lg font-medium sm:text-xl">
             <strong>Catherine Excelia Baptiste</strong> was born in{" "}
             <strong>1892</strong> in <strong>Crochu, St. Andrew&apos;s</strong>,
@@ -68,13 +70,14 @@ export default function AboutPage() {
             she already carried.
           </p>
         </div>
+      </PageSection>
 
+      <PageSection className="py-2 sm:py-4">
         <HeritageRule label="Nutmeg heritage" />
+      </PageSection>
 
-        <section
-          aria-labelledby="act2-heading"
-          className="mt-14 border-t border-[var(--excelia-stone)]/35 pt-14 sm:mt-16 sm:pt-16"
-        >
+      <PageSection className="mt-10 border-t border-[var(--excelia-stone)]/35 pt-14 sm:mt-12 sm:pt-16">
+        <section aria-labelledby="act2-heading">
           <h2
             id="act2-heading"
             className="font-[family-name:var(--font-instrument-serif)] text-3xl italic text-[var(--excelia-forest)] sm:text-[2.25rem]"
@@ -96,13 +99,14 @@ export default function AboutPage() {
             </p>
           </div>
         </section>
+      </PageSection>
 
+      <PageSection className="py-2 sm:py-4">
         <HeritageRule />
+      </PageSection>
 
-        <section
-          aria-labelledby="act3-heading"
-          className="mt-14 border-t border-[var(--excelia-stone)]/35 pt-14 sm:mt-16 sm:pt-16"
-        >
+      <PageSection className="mt-10 border-t border-[var(--excelia-stone)]/35 pb-24 pt-14 sm:mt-12 sm:pt-16">
+        <section aria-labelledby="act3-heading">
           <h2
             id="act3-heading"
             className="font-[family-name:var(--font-instrument-serif)] text-3xl italic text-[var(--excelia-forest)] sm:text-[2.25rem]"
@@ -124,7 +128,7 @@ export default function AboutPage() {
             </p>
           </div>
         </section>
-      </div>
+      </PageSection>
     </PageShell>
   );
 }

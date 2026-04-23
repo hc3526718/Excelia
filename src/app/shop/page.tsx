@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { PAGE_CONTAINER_CLASS } from "@/components/footer/ExceliaFooter";
+import { PageSection } from "@/components/layout/PageSection";
 import { PageShell } from "@/components/layout/PageShell";
 import { CoverageCalculator } from "@/components/shop/CoverageCalculator";
 
@@ -135,7 +135,7 @@ function ProductBlock({
 export default function ShopPage() {
   return (
     <PageShell>
-      <div className={`${PAGE_CONTAINER_CLASS} pb-24 pt-12 lg:pt-16`}>
+      <PageSection className="pt-12 lg:pt-16">
         <p className="font-[family-name:var(--font-barlow)] text-xs font-semibold uppercase tracking-[0.28em] text-[var(--excelia-tan)]">
           Shop
         </p>
@@ -146,17 +146,19 @@ export default function ShopPage() {
           Two weights, one shell from Grenadian harvests. Imagery below is a
           stand in until the hessian sack shot from slide seven exports.
         </p>
+      </PageSection>
 
-        <div className="mt-14 space-y-16 lg:space-y-20">
+      <PageSection className="mt-14 lg:mt-16">
+        <div className="space-y-16 lg:space-y-20">
           {PRODUCTS.map((p) => (
             <ProductBlock key={p.sku} product={p} />
           ))}
         </div>
+      </PageSection>
 
-        <div className="mt-20 lg:mt-24">
-          <CoverageCalculator />
-        </div>
-      </div>
+      <PageSection className="pb-24 pt-12 lg:mt-4 lg:pt-16">
+        <CoverageCalculator />
+      </PageSection>
     </PageShell>
   );
 }

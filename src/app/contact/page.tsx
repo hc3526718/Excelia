@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { UnifiedContactForm } from "@/components/contact/UnifiedContactForm";
-import { PAGE_CONTAINER_CLASS } from "@/components/footer/ExceliaFooter";
 import { PageGreenBand } from "@/components/layout/PageGreenBand";
+import { PageSection } from "@/components/layout/PageSection";
 import { PageShell } from "@/components/layout/PageShell";
 
 export const metadata: Metadata = {
@@ -26,13 +26,13 @@ export default function ContactPage() {
         </p>
       </PageGreenBand>
 
-      <div className={`${PAGE_CONTAINER_CLASS} pb-28 pt-12 lg:pt-16`}>
+      <PageSection className="pb-28 pt-12 lg:pt-16">
         <p className="font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-forest)] sm:text-base">
           Pick the reason that fits, add your details, and send. Your client
           opens with a draft you can edit before it goes.
         </p>
         <UnifiedContactForm />
-      </div>
+      </PageSection>
     </PageShell>
   );
 }

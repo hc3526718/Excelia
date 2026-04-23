@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { HeritageRule } from "@/components/about/HeritageRule";
-import { PAGE_CONTAINER_CLASS } from "@/components/footer/ExceliaFooter";
 import { PageGreenBand } from "@/components/layout/PageGreenBand";
+import { PageSection } from "@/components/layout/PageSection";
 import { PageShell } from "@/components/layout/PageShell";
 
 export const metadata: Metadata = {
@@ -52,7 +52,7 @@ export default function OurImpactPage() {
         </p>
       </PageGreenBand>
 
-      <div className={`${PAGE_CONTAINER_CLASS} pb-28 pt-12 lg:pt-16`}>
+      <PageSection className="pt-12 lg:pt-16">
         <section aria-labelledby="problem-heading">
           <h2
             id="problem-heading"
@@ -79,9 +79,13 @@ export default function OurImpactPage() {
             </p>
           </div>
         </section>
+      </PageSection>
 
+      <PageSection className="py-2 sm:py-4">
         <HeritageRule label="Botanical heritage" />
+      </PageSection>
 
+      <PageSection className="mt-6">
         <section aria-labelledby="answer-heading">
           <h2
             id="answer-heading"
@@ -119,13 +123,14 @@ export default function OurImpactPage() {
             ))}
           </div>
         </section>
+      </PageSection>
 
+      <PageSection className="py-2 sm:py-4">
         <HeritageRule />
+      </PageSection>
 
-        <section
-          aria-labelledby="community-heading"
-          className="mt-14 border-t border-[var(--excelia-stone)]/35 pt-14 sm:mt-16 sm:pt-16"
-        >
+      <PageSection className="mt-10 border-t border-[var(--excelia-stone)]/35 pt-14 sm:mt-12 sm:pt-16">
+        <section aria-labelledby="community-heading">
           <h2
             id="community-heading"
             className="font-[family-name:var(--font-instrument-serif)] text-3xl italic text-[var(--excelia-forest)] sm:text-[2.25rem]"
@@ -147,8 +152,10 @@ export default function OurImpactPage() {
             </p>
           </div>
         </section>
+      </PageSection>
 
-        <figure className="relative mt-10 overflow-hidden rounded-2xl border border-[var(--excelia-stone)]/45 bg-[var(--excelia-forest)]/08 shadow-[0_22px_55px_rgba(45,77,54,0.12)]">
+      <PageSection className="mt-10">
+        <figure className="relative overflow-hidden rounded-2xl border border-[var(--excelia-stone)]/45 bg-[var(--excelia-forest)]/08 shadow-[0_22px_55px_rgba(45,77,54,0.12)]">
           <div className="relative aspect-[16/10] w-full max-h-[420px] sm:max-h-[480px]">
             <Image
               src="/assets/NutmegImg.jpg"
@@ -163,9 +170,11 @@ export default function OurImpactPage() {
             assets land.
           </figcaption>
         </figure>
+      </PageSection>
 
+      <PageSection className="mt-20 pb-28 scroll-mt-24 sm:mt-24">
         <section
-          className="mt-20 scroll-mt-24 rounded-2xl border border-[var(--excelia-stone)]/40 bg-white/60 p-6 shadow-[0_18px_45px_rgba(45,77,54,0.06)] sm:p-10"
+          className="rounded-2xl border border-[var(--excelia-stone)]/40 bg-white/60 p-6 shadow-[0_18px_45px_rgba(45,77,54,0.06)] sm:p-10"
           aria-labelledby="pod-heading"
         >
           <h2
@@ -189,7 +198,7 @@ export default function OurImpactPage() {
             GCNA value diagram from slide eight: shell to garden, kernel to spice
           </div>
         </section>
-      </div>
+      </PageSection>
     </PageShell>
   );
 }
