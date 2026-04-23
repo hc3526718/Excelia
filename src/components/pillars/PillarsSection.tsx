@@ -6,21 +6,21 @@ const PILLARS = [
     icon: "/assets/Basket.png",
     alt: "Basket icon",
     body:
-      "Sourced from nutmeg estates in Grenada — the world’s second-largest nutmeg producer — where shells would otherwise be discarded after spice harvesting.",
+      "Shells come from nutmeg estates in Grenada, a leading producer, where harvest once treated this material as side stream next to the spice itself.",
   },
   {
     kicker: "SUN-CURED",
     icon: "/assets/Sun.png",
     alt: "Sun icon",
     body:
-      "Naturally dried under the Caribbean sun, preserving the shell’s aromatic oils and structural integrity.",
+      "Caribbean sun and air dry the shells so their oils stay in the tissue and the pieces hold up on paths and in borders.",
   },
   {
     kicker: "FULLY COMPOSTABLE",
     icon: "/assets/Hand.png",
     alt: "Hand icon",
     body:
-      "Unlike gravel or plastic alternatives, shells break down gradually into the soil, returning nutrients and leaving nothing behind.",
+      "Over seasons the shells soften into soil, return organic matter, and do not leave plastic grit or stone that never weathers down.",
   },
 ];
 
@@ -28,7 +28,7 @@ export function PillarsSection() {
   return (
     <section
       id="pillars"
-      className="relative isolate z-0 scroll-mt-24 border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] px-4 py-16 sm:px-8 lg:px-12"
+      className="relative isolate z-0 scroll-mt-24 border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] px-3 py-16 sm:px-8 lg:px-12"
     >
       <div className="mx-auto grid max-w-6xl gap-14 md:grid-cols-3 md:gap-12 lg:gap-16">
         {PILLARS.map((item) => (

@@ -1,84 +1,43 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  GardenerContactForm,
-  PressBlurb,
-  TradeEnquiryForm,
-} from "@/components/contact/ContactTracks";
+import { UnifiedContactForm } from "@/components/contact/UnifiedContactForm";
+import { PAGE_CONTAINER_CLASS } from "@/components/footer/ExceliaFooter";
+import { PageGreenBand } from "@/components/layout/PageGreenBand";
 import { PageShell } from "@/components/layout/PageShell";
 
 export const metadata: Metadata = {
   title: "Contact Excelia",
   description:
-    "Reach Excelia for gardener questions, trade and landscape enquiries, or press and partnerships — email-first, no chat widgets.",
+    "Reach Excelia by email for gardener questions, trade routes, press, and partnerships.",
 };
 
 export default function ContactPage() {
   return (
     <PageShell>
-      <div className="mx-auto max-w-3xl px-4 pb-28 pt-10 sm:px-6 lg:max-w-[46rem] lg:pt-14">
-        <p className="font-[family-name:var(--font-barlow)] text-xs font-semibold uppercase tracking-[0.28em] text-[var(--excelia-tan)]">
+      <PageGreenBand className="pt-6 sm:pt-8">
+        <p className="font-[family-name:var(--font-barlow)] text-xs font-semibold uppercase tracking-[0.28em] text-[var(--excelia-gold)]">
           Contact
         </p>
-        <h1 className="mt-3 font-[family-name:var(--font-instrument-serif)] text-4xl italic leading-tight text-[var(--excelia-forest)] sm:text-5xl">
+        <h1 className="mt-3 font-[family-name:var(--font-instrument-serif)] text-4xl italic leading-tight sm:text-5xl">
           Reach us by email
         </h1>
-        <p className="mt-6 font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-olive)] sm:text-base">
-          Excelia is deliberately email-first — it fits a heritage register and
-          gives growers, buyers, and partners a clear thread to follow. Choose
-          the track that matches you; each opens a draft in your mail client.
+        <p className="mt-5 max-w-2xl font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-white/88 sm:text-base">
+          We keep mail at the centre on purpose. It suits a heritage register and
+          leaves a single thread your team can follow.
         </p>
+      </PageGreenBand>
 
-        <section className="mt-16 scroll-mt-24" aria-labelledby="gardeners-heading">
-          <h2
-            id="gardeners-heading"
-            className="font-[family-name:var(--font-instrument-serif)] text-2xl italic text-[var(--excelia-forest)] sm:text-3xl"
-          >
-            For gardeners
-          </h2>
-          <p className="mt-4 font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-forest)]">
-            Questions about using nutmeg shells in beds, paths, or containers —
-            or to hear when new batches land.
-          </p>
-          <GardenerContactForm />
-        </section>
+      <div className={`${PAGE_CONTAINER_CLASS} pb-28 pt-12 lg:pt-16`}>
+        <p className="font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-forest)] sm:text-base">
+          Pick the reason that fits, add your details, and send. Your client
+          opens with a draft you can edit before it goes.
+        </p>
+        <UnifiedContactForm />
 
-        <section
-          className="mt-20 border-t border-[var(--excelia-stone)]/35 pt-16 scroll-mt-24"
-          aria-labelledby="trade-heading"
-        >
-          <h2
-            id="trade-heading"
-            className="font-[family-name:var(--font-instrument-serif)] text-2xl italic text-[var(--excelia-forest)] sm:text-3xl"
-          >
-            Garden centres &amp; landscape architects
-          </h2>
-          <p className="mt-4 font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-forest)]">
-            Wholesale-style enquiries — volume, regions, and timing — stay on a
-            dedicated route so trade buyers aren&apos;t mixed with retail
-            traffic.
-          </p>
-          <TradeEnquiryForm />
-        </section>
-
-        <section
-          className="mt-20 border-t border-[var(--excelia-stone)]/35 pt-16 scroll-mt-24"
-          aria-labelledby="press-heading"
-        >
-          <h2
-            id="press-heading"
-            className="font-[family-name:var(--font-instrument-serif)] text-2xl italic text-[var(--excelia-forest)] sm:text-3xl"
-          >
-            Press &amp; partnerships
-          </h2>
-          <PressBlurb />
-        </section>
-
-        <footer className="mt-20 border-t border-[var(--excelia-stone)]/35 pt-10">
+        <div className="mt-16 border-t border-[var(--excelia-stone)]/35 pt-10">
           <p className="font-[family-name:var(--font-barlow)] text-[13px] leading-relaxed text-[var(--excelia-olive)]">
-            UK registered office and any Grenada operational contact can be listed
-            here once confirmed — we don&apos;t publish placeholders for
-            addresses.
+            We list a UK registered office or a Grenada operational line only once
+            the details are confirmed. No placeholder addresses on the site.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
@@ -94,7 +53,7 @@ export default function ContactPage() {
               Shop
             </Link>
           </div>
-        </footer>
+        </div>
       </div>
     </PageShell>
   );

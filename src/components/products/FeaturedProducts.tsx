@@ -4,13 +4,13 @@ const PRODUCTS = [
   {
     name: "5kg hessian sack",
     detail:
-      "Natural nutmeg shells for borders, paths, and pot dressing — compact volume for smaller beds or first tries.",
+      "Natural nutmeg shells for borders, paths, and pot dressing. Smaller volume for modest beds or a first order.",
     weight: "5 kg",
   },
   {
     name: "10kg hessian sack",
     detail:
-      "The same shells, scaled for generous coverage — ideal when you already know how Excelia behaves in your soil.",
+      "The same shells with room for larger coverage when you already know how they behave in your soil.",
     weight: "10 kg",
   },
 ];
@@ -19,7 +19,7 @@ export function FeaturedProducts() {
   return (
     <section
       id="featured-products"
-      className="relative isolate z-0 scroll-mt-24 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-cream)] px-4 py-24 sm:px-8 lg:px-12"
+      className="relative isolate z-0 scroll-mt-24 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-cream)] px-3 py-24 sm:px-8 lg:px-12"
     >
       <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[minmax(0,340px)_1fr] lg:items-start lg:gap-16">
         <div className="max-w-lg space-y-6">
@@ -30,9 +30,8 @@ export function FeaturedProducts() {
             Two sacks, one honest line
           </h2>
           <p className="font-[family-name:var(--font-barlow)] text-base leading-relaxed text-[var(--excelia-olive)]">
-            We ship heritage co-product as mulch — not an endless catalogue of
-            variants. Pick the bag that fits your ground; the story and the
-            shell stay the same.
+            One material, two sack sizes. Choose the bag that suits your beds;
+            the Grenada story stays with either weight.
           </p>
           <Link
             href="/shop"

@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { PAGE_CONTAINER_CLASS } from "@/components/footer/ExceliaFooter";
 import { PageShell } from "@/components/layout/PageShell";
 import { CoverageCalculator } from "@/components/shop/CoverageCalculator";
 
 export const metadata: Metadata = {
-  title: "Shop — Natural nutmeg shell mulch",
+  title: "Shop: natural nutmeg shell mulch",
   description:
-    "Excelia natural nutmeg shells in 5kg and 10kg hessian sacks — Grenada-grown, sun-cured, compostable garden mulch.",
+    "Excelia natural nutmeg shells in 5kg and 10kg hessian sacks from Grenada, sun dried for the garden.",
 };
 
 const PRODUCTS = [
@@ -18,9 +19,9 @@ const PRODUCTS = [
     sack: "Hessian sack",
     coverage: "~5 m²",
     longevity:
-      "Seasonal to multi-season depending on depth and weather — shells break down gradually.",
+      "Seasons of use depending on depth and rain; shells keep breaking down gently.",
     bullets: ["Borders", "Paths", "Pot dressing"],
-    pills: ["Compostable", "Aromatic", "Weed-suppressing"],
+    pills: ["Compostable", "Aromatic", "Weed suppressing"],
   },
   {
     sku: "EXL-SHELL-10",
@@ -29,9 +30,9 @@ const PRODUCTS = [
     sack: "Hessian sack",
     coverage: "~11 m²",
     longevity:
-      "Seasonal to multi-season depending on depth and weather — shells break down gradually.",
+      "Seasons of use depending on depth and rain; shells keep breaking down gently.",
     bullets: ["Borders", "Paths", "Pot dressing"],
-    pills: ["Compostable", "Aromatic", "Weed-suppressing"],
+    pills: ["Compostable", "Aromatic", "Weed suppressing"],
   },
 ];
 
@@ -46,7 +47,7 @@ function ProductBlock({
         <div className="relative aspect-[5/4] min-h-[280px] bg-[var(--excelia-cream)] lg:aspect-auto lg:min-h-[420px]">
           <Image
             src="/assets/NutmegImg.jpg"
-            alt="Hessian sack product photography — replace with slide 7 hero from deck"
+            alt="Hessian sack product photograph: replace with slide seven hero when ready"
             fill
             className="object-cover object-center"
             sizes="(max-width: 1024px) 100vw, 50vw"
@@ -71,7 +72,7 @@ function ProductBlock({
           <dl className="mt-8 grid gap-4 font-[family-name:var(--font-barlow)] text-[15px] text-[var(--excelia-forest)] sm:grid-cols-2">
             <div className="rounded-xl bg-[var(--excelia-cream)]/90 px-4 py-3">
               <dt className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--excelia-tan)]">
-                Coverage (guide)
+                Coverage guide
               </dt>
               <dd className="mt-1 font-semibold">{product.coverage}</dd>
             </div>
@@ -115,8 +116,7 @@ function ProductBlock({
               Customer reviews
             </p>
             <p className="mt-3 font-[family-name:var(--font-barlow)] text-sm italic text-[var(--excelia-olive)]">
-              Reviews will appear here as gardeners share how Excelia performs in
-              their beds and paths.
+              Reviews show here once gardeners send first notes from their beds.
             </p>
           </div>
 
@@ -135,7 +135,7 @@ function ProductBlock({
 export default function ShopPage() {
   return (
     <PageShell>
-      <div className="mx-auto max-w-6xl px-4 pb-24 pt-10 sm:px-6 lg:pt-14">
+      <div className={`${PAGE_CONTAINER_CLASS} pb-24 pt-12 lg:pt-16`}>
         <p className="font-[family-name:var(--font-barlow)] text-xs font-semibold uppercase tracking-[0.28em] text-[var(--excelia-tan)]">
           Shop
         </p>
@@ -143,9 +143,8 @@ export default function ShopPage() {
           Natural nutmeg shells
         </h1>
         <p className="mt-6 max-w-2xl font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-olive)] sm:text-base">
-          Two sizes, one material — Grenadian co-product as a considered mulch.
-          Photography is a stand-in until the hessian sack hero from the deck is
-          exported.
+          Two weights, one shell from Grenadian harvests. Imagery below is a
+          stand in until the hessian sack shot from slide seven exports.
         </p>
 
         <div className="mt-14 space-y-16 lg:space-y-20">

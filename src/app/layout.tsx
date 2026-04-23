@@ -16,9 +16,9 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Excelia — Nutmeg-smart soil topper",
+  title: "Excelia: soil topper from Grenada",
   description:
-    "Excelia transforms nutmeg co-product into a premium soil topper—reducing waste, supporting soil ecology, and bringing a distinctive natural finish to plantings.",
+    "Excelia routes shells from Grenadian nutmeg harvest into garden mulch that feeds soil life and finishes beds with an honest texture.",
 };
 
 export default function RootLayout({

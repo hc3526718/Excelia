@@ -4,13 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 const MISSION_SHORT =
-  "Nutmeg shells shouldn’t end as anonymous waste — they belong in soil, where they break down honestly and carry a place name with them. That’s the impact we’re building toward: closed loops, real growers, gardens you can touch.";
+  "Nutmeg shells carry a parish name when they leave Grenada. We route them into soil where they belong, alongside growers who still live from the trees. Gardens feel the difference in texture and story.";
 
 export function MissionSection() {
   return (
     <section
       id="why-excelia"
-      className="relative isolate z-0 scroll-mt-28 bg-[var(--excelia-forest)] px-4 py-16 sm:px-8 sm:py-20 lg:px-12"
+      className="relative isolate z-0 scroll-mt-28 bg-[var(--excelia-forest)] px-3 py-16 sm:px-8 sm:py-20 lg:px-12"
     >
       <div className="mx-auto grid max-w-6xl gap-10 overflow-hidden rounded-2xl border border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] shadow-[0_22px_55px_rgba(45,77,54,0.07)] lg:grid-cols-3 lg:items-stretch lg:gap-0">
         <div className="relative min-h-[280px] overflow-hidden rounded-t-2xl lg:col-span-1 lg:min-h-full lg:rounded-l-2xl lg:rounded-tr-none">
@@ -29,7 +29,7 @@ export function MissionSection() {
             Why Excelia
           </p>
           <h2 className="mt-4 font-[family-name:var(--font-instrument-serif)] text-3xl italic text-[var(--excelia-forest)] sm:text-4xl">
-            Whole‑plant thinking, field‑ready impact
+            Whole plant thinking, field ready impact
           </h2>
           <p className="mt-8 font-[family-name:var(--font-barlow)] text-lg leading-relaxed text-[var(--excelia-forest)] sm:text-xl">
             {MISSION_SHORT}

@@ -75,7 +75,7 @@ export function IntroSequence({
         className={`relative mx-auto my-auto overflow-hidden ${panelBase} ${
           isBar
             ? "mt-0 h-[78px] w-[min(72rem,calc(100vw-2rem))] px-4 py-2 sm:px-5"
-            : "w-[min(640px,97vw)] max-h-[min(88svh,860px)] max-w-none px-6 pb-6 pt-2 sm:w-[min(700px,95vw)] sm:max-h-[min(90svh,900px)] sm:px-10 sm:pb-8 sm:pt-3"
+            : "w-[min(640px,97vw)] max-h-[min(88svh,860px)] max-w-none px-6 pb-5 pt-2 sm:w-[min(700px,95vw)] sm:max-h-[min(90svh,900px)] sm:px-10 sm:pb-6 sm:pt-2"
         }`}
         initial={false}
         animate={{
@@ -93,12 +93,12 @@ export function IntroSequence({
           className={`flex h-full min-h-0 items-center ${
             isBar
               ? "flex-row justify-start gap-2"
-              : "-space-y-7 flex-col justify-center text-center leading-none sm:-space-y-9 [&>*]:m-0 [&>*]:leading-none"
+              : "flex-col justify-center text-center leading-none [&>*]:m-0 [&>*]:leading-none"
           }`}
           layout={false}
         >
           <motion.div
-            className="relative shrink-0 leading-none"
+            className="relative z-10 shrink-0 leading-none"
             animate={{ opacity: isBar ? 0 : 1 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
@@ -107,7 +107,7 @@ export function IntroSequence({
               alt=""
               width={520}
               height={160}
-              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(5rem,19vw,7.5rem)] sm:h-[clamp(5.25rem,17vw,8.25rem)]"}`}
+              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(4.65rem,17vw,6.85rem)] sm:h-[clamp(4.85rem,15vw,7.35rem)]"}`}
               priority
               aria-hidden
             />
@@ -121,13 +121,13 @@ export function IntroSequence({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.28 }}
-                className="-mt-1 flex flex-col items-center leading-none sm:-mt-2 [&>*]:m-0 [&>*]:leading-none"
+                className="-mt-[3.5rem] flex flex-col items-center sm:-mt-[4.25rem] [&>*]:m-0 [&>*]:leading-none"
               >
                 <ExceliaWordmark
                   priority
-                  className="h-[clamp(4.85rem,18vw,7.75rem)] w-auto sm:h-[clamp(5.25rem,16vw,9rem)] md:h-[clamp(5.5rem,15vw,10rem)]"
+                  className="relative z-[1] h-[clamp(4.35rem,15.5vw,7.15rem)] w-auto sm:h-[clamp(4.75rem,14vw,8.15rem)] md:h-[clamp(5rem,13vw,8.75rem)]"
                 />
-                <p className="max-w-2xl -translate-y-1 px-2 font-[family-name:var(--font-instrument-serif)] text-[clamp(1.05rem,3.1vw,1.65rem)] italic leading-[1.15] text-[var(--excelia-forest)] sm:text-[clamp(1.15rem,2.85vw,1.85rem)] md:text-[clamp(1.2rem,2.6vw,2rem)]">
+                <p className="max-w-2xl -mt-1.5 px-2 pt-0.5 font-[family-name:var(--font-instrument-serif)] text-[clamp(0.92rem,2.75vw,1.4rem)] italic leading-snug text-[var(--excelia-forest)] sm:-mt-2 sm:text-[clamp(0.98rem,2.45vw,1.5rem)] md:text-[clamp(1.02rem,2.2vw,1.58rem)]">
                   We grow Caribbean Roots
                 </p>
               </motion.div>

@@ -9,7 +9,7 @@ import {
 import { useMemo, useRef } from "react";
 
 const STORY =
-  "Excelia upcycles nutmeg co‑product into a refined soil topper—closing the loop on spice waste while feeding soil life, improving structure, and giving beds a distinctive, natural finish.";
+  "Excelia turns shells left from spice harvest into a soil topper that feeds life in the bed, steadies structure, and gives plantings a clear, natural surface.";
 
 function StoryWord({
   children,
