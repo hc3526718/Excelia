@@ -4,35 +4,30 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { type FormEvent, useCallback, useState } from "react";
+import { SiteHeader } from "@/components/hero/SiteHeader";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { FeaturedProducts } from "@/components/products/FeaturedProducts";
 import { MissionSection } from "@/components/mission/MissionSection";
 import { PillarsSection } from "@/components/pillars/PillarsSection";
 import { StorySection } from "@/components/story/StorySection";
 
-const STICKER_TILTS_DEG = [14, 31, 22] as const;
+/** Clockwise negative = counter-clockwise tilt; all within ±20° */
+const STICKER_TILTS_DEG = [-14, 18, -10] as const;
 
-/**
- * ~200px-wide assets with ≥5px gap between bounding boxes on the horizontal axis
- * where they share the same row band (island vs flag).
- */
 const STICKERS = [
   {
     src: "/assets/Island_Sticker.png",
     alt: "Island sticker",
-    className: "right-0 top-10 z-[3]",
     tiltIndex: 0 as const,
   },
   {
     src: "/assets/Flag_Sticker.png",
     alt: "Flag sticker",
-    className: "right-[215px] top-14 z-[2] sm:right-[218px] sm:top-16",
     tiltIndex: 1 as const,
   },
   {
     src: "/assets/Logo_Sticker.png",
     alt: "Logo sticker",
-    className: "right-6 bottom-12 z-[1] sm:right-8 sm:bottom-14",
     tiltIndex: 2 as const,
   },
 ];
@@ -54,14 +49,14 @@ function ContactFooter() {
   return (
     <footer
       id="contact"
-      className="relative isolate z-0 scroll-mt-24 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-forest)] px-4 py-16 text-[var(--excelia-cream)] sm:px-8"
+      className="relative isolate z-0 scroll-mt-20 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-forest)] px-3 py-12 text-[var(--excelia-cream)] sm:scroll-mt-24 sm:px-8 sm:py-16"
     >
-      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-start lg:gap-12">
+      <div className="mx-auto grid max-w-6xl gap-10 sm:gap-12 lg:grid-cols-2 lg:items-start lg:gap-12">
         <div className="min-w-0 max-w-lg lg:max-w-none">
-          <p className="font-[family-name:var(--font-barlow)] text-xs font-semibold uppercase tracking-[0.25em] text-[var(--excelia-gold)]">
+          <p className="font-[family-name:var(--font-barlow)] text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--excelia-gold)] sm:text-xs sm:tracking-[0.25em]">
             Contact
           </p>
-          <p className="mt-3 font-[family-name:var(--font-barlow)] text-sm leading-relaxed text-white/85">
+          <p className="mt-2 font-[family-name:var(--font-barlow)] text-[13px] leading-relaxed text-white/85 sm:mt-3 sm:text-sm">
             Partner with Excelia for nutmeg‑smart soil programs, allocation updates,
             and sustainability reporting—we reply to growers, retailers, and brand
             teams routing spice waste back to the ground.
@@ -93,13 +88,13 @@ function ContactFooter() {
           </form>
 
           <nav
-            className="mt-8 border-t border-white/15 pt-6 font-[family-name:var(--font-barlow)] text-sm text-white/90"
+            className="mt-8 border-t border-white/15 pt-6 font-[family-name:var(--font-barlow)] text-xs text-white/90 sm:text-sm"
             aria-label="Footer"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--excelia-gold)]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--excelia-gold)] sm:text-xs">
               Explore
             </p>
-            <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
+            <ul className="mt-3 flex flex-col gap-2">
               <li>
                 <Link
                   className="transition-opacity hover:opacity-75"
@@ -136,12 +131,23 @@ function ContactFooter() {
           </nav>
         </div>
 
-        <div className="relative ml-0 min-h-[300px] w-full shrink-0 lg:min-h-[320px] lg:max-w-none">
-          <div className="relative mx-auto h-[300px] w-full max-w-[28rem] sm:h-[320px] lg:absolute lg:inset-0 lg:mx-0 lg:h-full lg:max-w-none">
+        <div className="relative flex w-full min-w-0 shrink-0 flex-col items-end gap-6 sm:gap-8">
+          <Link href="/" className="shrink-0">
+            <Image
+              src="/assets/Excelia_Name.png"
+              alt="Excelia"
+              width={520}
+              height={112}
+              className="h-auto w-[min(72vw,280px)] sm:w-[min(56vw,340px)] lg:w-[min(420px,38vw)]"
+              sizes="(max-width: 1024px) 72vw, 420px"
+            />
+          </Link>
+
+          <div className="flex w-full flex-col items-center gap-6 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-8 md:gap-10 lg:w-auto lg:flex-nowrap lg:justify-end">
             {STICKERS.map((s) => (
               <div
                 key={s.src}
-                className={`pointer-events-none absolute ${s.className}`}
+                className="pointer-events-none shrink-0"
                 style={{
                   transform: `rotate(${STICKER_TILTS_DEG[s.tiltIndex]}deg)`,
                 }}
@@ -149,10 +155,10 @@ function ContactFooter() {
                 <Image
                   src={s.src}
                   alt={s.alt}
-                  width={280}
-                  height={280}
-                  className="h-auto w-[200px] drop-shadow-[0_14px_26px_rgba(0,0,0,0.34)] sm:w-[200px] lg:w-[200px]"
-                  sizes="200px"
+                  width={320}
+                  height={320}
+                  className="h-auto w-[min(62vw,220px)] drop-shadow-[0_14px_26px_rgba(0,0,0,0.34)] sm:w-[240px] md:w-[260px] lg:w-[280px]"
+                  sizes="(max-width: 640px) 62vw, 280px"
                 />
               </div>
             ))}
@@ -165,14 +171,23 @@ function ContactFooter() {
 
 export function LandingExperience() {
   const [pageReady, setPageReady] = useState(false);
+  const [navReveal, setNavReveal] = useState(false);
 
   const handleIntroFullyComplete = useCallback(() => {
     setPageReady(true);
   }, []);
 
+  const handleNavReveal = useCallback(() => {
+    setNavReveal(true);
+  }, []);
+
   return (
     <>
-      <HeroSection onIntroFullyComplete={handleIntroFullyComplete} />
+      <HeroSection
+        navReveal={navReveal}
+        onNavReveal={handleNavReveal}
+        onIntroFullyComplete={handleIntroFullyComplete}
+      />
 
       {pageReady && (
         <motion.div
@@ -188,6 +203,9 @@ export function LandingExperience() {
           <ContactFooter />
         </motion.div>
       )}
+
+      {/* Render last so fixed chrome paints above scrolling sections */}
+      <SiteHeader visible={navReveal} />
     </>
   );
 }

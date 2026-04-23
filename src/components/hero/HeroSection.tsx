@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { IntroSequence } from "@/components/landing/IntroSequence";
@@ -12,15 +11,20 @@ const VIDEO_MASK =
 
 type HeroSectionProps = {
   onIntroFullyComplete: () => void;
+  onNavReveal: () => void;
+  navReveal: boolean;
 };
 
-export function HeroSection({ onIntroFullyComplete }: HeroSectionProps) {
+export function HeroSection({
+  onIntroFullyComplete,
+  onNavReveal,
+  navReveal,
+}: HeroSectionProps) {
   const [introOverlayOpen, setIntroOverlayOpen] = useState(true);
-  const [navReveal, setNavReveal] = useState(false);
 
   const handleMorphComplete = useCallback(() => {
-    setNavReveal(true);
-  }, []);
+    onNavReveal();
+  }, [onNavReveal]);
 
   const handleIntroComplete = useCallback(() => {
     setIntroOverlayOpen(false);
@@ -30,137 +34,64 @@ export function HeroSection({ onIntroFullyComplete }: HeroSectionProps) {
   const showBody = !introOverlayOpen;
 
   return (
-    <section
-      id="about"
-      className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-[var(--excelia-cream)]"
-    >
-      <div
-        className="pointer-events-none absolute inset-0 z-0 min-h-[100svh]"
-        style={{
-          maskImage: VIDEO_MASK,
-          WebkitMaskImage: VIDEO_MASK,
-        }}
+      <section
+        id="about"
+        className="relative flex min-h-[100svh] flex-col overflow-hidden bg-[var(--excelia-cream)]"
       >
-        <PingPongVideo
-          src="/assets/3AgNzzqv3gbwXg9WC8wI5_output.mp4"
-          className="min-h-[100svh] h-full w-full object-cover"
-        />
-      </div>
-
-      <AnimatePresence>
-        {introOverlayOpen && (
-          <IntroSequence
-            key="intro"
-            onMorphComplete={handleMorphComplete}
-            onComplete={handleIntroComplete}
+        <div
+          className="pointer-events-none absolute inset-0 z-0 min-h-[100svh]"
+          style={{
+            maskImage: VIDEO_MASK,
+            WebkitMaskImage: VIDEO_MASK,
+          }}
+        >
+          <PingPongVideo
+            src="/assets/3AgNzzqv3gbwXg9WC8wI5_output.mp4"
+            className="min-h-[100svh] h-full w-full object-cover"
           />
-        )}
-      </AnimatePresence>
+        </div>
 
-      <motion.header
-        className="fixed left-0 right-0 top-5 z-[20000] flex justify-center px-4 sm:top-6 sm:px-6 lg:px-10"
-        initial={false}
-        animate={{
-          opacity: navReveal ? 1 : 0,
-        }}
-        transition={{
-          duration: 0.55,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        style={{
-          pointerEvents: navReveal ? "auto" : "none",
-        }}
-        aria-hidden={!navReveal}
-      >
-        <nav
-          className="grid w-full max-w-6xl grid-cols-1 items-center gap-4 rounded-[16px] bg-white px-3 py-2.5 shadow-[0_12px_40px_rgba(45,77,54,0.12)] sm:px-5 md:grid-cols-[1fr_auto_1fr] md:gap-6 md:py-3"
-          aria-label="Primary"
+        <AnimatePresence>
+          {introOverlayOpen && (
+            <IntroSequence
+              key="intro"
+              onMorphComplete={handleMorphComplete}
+              onComplete={handleIntroComplete}
+            />
+          )}
+        </AnimatePresence>
+
+        <div
+          className={`relative z-[1] flex flex-1 flex-col px-3 pb-8 pt-4 sm:px-6 sm:pb-12 sm:pt-5 lg:px-10 ${
+            navReveal
+              ? "pt-[4.5rem] sm:pt-[5.75rem] md:pt-[6rem] lg:pt-[6.5rem]"
+              : ""
+          }`}
         >
-          <div className="flex min-h-[56px] justify-center md:justify-start md:items-center">
-            {navReveal ? (
-              <Link href="/" className="block leading-none">
-                <Image
-                  src="/assets/Excelia_Logo.png"
-                  alt="Excelia"
-                  width={280}
-                  height={78}
-                  className="h-14 w-auto sm:h-[4.25rem]"
-                  priority
-                />
-              </Link>
-            ) : (
-              <div
-                className="inline-block opacity-0"
-                aria-hidden
-                style={{ width: 220, height: 56 }}
-              />
-            )}
-          </div>
-
-          <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-[family-name:var(--font-barlow)] text-[16px] font-medium text-[var(--excelia-forest)] md:justify-center">
-            <li>
-              <a className="transition-opacity hover:opacity-70" href="#about">
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                className="transition-opacity hover:opacity-70"
-                href="#mission"
-              >
-                Mission
-              </a>
-            </li>
-            <li>
-              <a
-                className="transition-opacity hover:opacity-70"
-                href="#contact"
-              >
-                Contact
-              </a>
-            </li>
-          </ul>
-
-          <div className="flex justify-center md:justify-end">
-            <a
-              href="#shop"
-              className="inline-flex items-center justify-center rounded-full bg-[var(--excelia-rust)] px-9 py-4 font-[family-name:var(--font-barlow)] text-[17px] font-semibold text-white shadow-sm transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-md sm:px-11 sm:py-[1.15rem] sm:text-lg"
-            >
-              Shop Now
-            </a>
-          </div>
-        </nav>
-      </motion.header>
-
-      <div
-        className={`relative z-10 flex flex-1 flex-col px-4 pb-16 pt-6 sm:px-6 lg:px-10 ${
-          navReveal ? "pt-[6.25rem] sm:pt-[7rem]" : ""
-        }`}
-      >
-        <motion.div
-          className="mx-auto flex flex-1 flex-col items-center justify-center px-2 pb-8 pt-12 text-center sm:px-4 md:pt-16"
-          initial={false}
-          animate={{ opacity: showBody ? 1 : 0 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          style={{ pointerEvents: showBody ? "auto" : "none" }}
-        >
-          <h1 className="max-w-5xl space-y-0 leading-[1.05] sm:leading-[1.02]">
-            <span className="block font-[family-name:var(--font-barlow)] text-[clamp(2.15rem,5.2vw,3.75rem)] font-semibold tracking-[-4px] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
-              Soil that honours every nutmeg
-            </span>
-            <span className="mt-0 block font-[family-name:var(--font-instrument-serif)] text-[clamp(3.25rem,13vw,96px)] italic leading-[0.88] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.35)] md:leading-[0.86]">
-              turning waste into growth
-            </span>
-          </h1>
-
-          <a
-            href="#products"
-            className="mt-12 inline-flex items-center justify-center rounded-full bg-white px-11 py-5 font-[family-name:var(--font-barlow)] text-lg font-semibold text-[var(--excelia-forest)] shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_20px_48px_rgba(0,0,0,0.22)] sm:px-12 sm:py-[1.35rem] sm:text-xl"
+          <motion.div
+            className="mx-auto flex flex-1 flex-col items-center justify-center px-2 pb-4 pt-6 text-center sm:px-4 sm:pb-6 sm:pt-10 md:pb-8 md:pt-14"
+            initial={false}
+            animate={{ opacity: showBody ? 1 : 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            style={{ pointerEvents: showBody ? "auto" : "none" }}
           >
-            Start from the topper
-          </a>
-        </motion.div>
-      </div>
-    </section>
+            <h1 className="max-w-5xl space-y-0 leading-[1.06] sm:leading-[1.02]">
+              <span className="block font-[family-name:var(--font-barlow)] text-[clamp(1.35rem,4.5vw,3.25rem)] font-semibold tracking-[-2px] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)] sm:tracking-[-4px] md:text-[clamp(2.15rem,5.2vw,3.75rem)]">
+                Soil that honours every nutmeg
+              </span>
+              <span className="mt-0 block font-[family-name:var(--font-instrument-serif)] text-[clamp(1.85rem,9.5vw,96px)] italic leading-[0.9] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.35)] sm:text-[clamp(2.35rem,11vw,96px)] md:leading-[0.86]">
+                turning waste into growth
+              </span>
+            </h1>
+
+            <Link
+              href="#products"
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 font-[family-name:var(--font-barlow)] text-[13px] font-semibold text-[var(--excelia-forest)] shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_20px_48px_rgba(0,0,0,0.22)] sm:mt-10 sm:px-10 sm:py-4 sm:text-lg md:px-12 md:py-[1.2rem] md:text-xl"
+            >
+              Start from the topper
+            </Link>
+          </motion.div>
+        </div>
+      </section>
   );
 }

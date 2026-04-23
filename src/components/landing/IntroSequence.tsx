@@ -74,7 +74,7 @@ export function IntroSequence({
         className={`relative mx-auto overflow-hidden ${panelBase} ${
           isBar
             ? "mt-0 h-[78px] w-[min(72rem,calc(100vw-2rem))] px-4 py-2 sm:px-5"
-            : "mt-[min(4vh,36px)] w-[min(340px,82vw)] max-w-none px-3 pb-3 pt-3 sm:px-4 sm:pb-3.5 sm:pt-3.5"
+            : "mt-[min(2vh,16px)] w-[min(300px,88vw)] max-h-[min(34svh,260px)] max-w-none px-3 pb-2.5 pt-2.5 sm:max-h-[min(38svh,300px)] sm:px-4 sm:pb-3 sm:pt-3"
         }`}
         initial={false}
         animate={{
@@ -92,7 +92,7 @@ export function IntroSequence({
           className={`flex h-full min-h-0 items-center ${
             isBar
               ? "flex-row justify-start gap-2"
-              : "flex-col justify-center gap-1.5 text-center sm:gap-2"
+              : "flex-col justify-center gap-1 text-center sm:gap-1.5"
           }`}
           layout={false}
         >
@@ -106,7 +106,7 @@ export function IntroSequence({
               alt=""
               width={520}
               height={160}
-              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(4rem,14vw,5.75rem)] sm:h-[clamp(4.25rem,12vw,6.25rem)]"}`}
+              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(2.65rem,11vw,4rem)] sm:h-[clamp(3rem,10vw,4.75rem)]"}`}
               priority
               aria-hidden
             />
@@ -120,18 +120,18 @@ export function IntroSequence({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.28 }}
-                className="flex flex-col items-center gap-1.5 sm:gap-2"
+                className="flex flex-col items-center gap-1 sm:gap-1.5"
               >
                 <Image
                   src="/assets/Excelia_Name.png"
                   alt="Excelia"
                   width={640}
                   height={128}
-                  className="h-[clamp(3rem,10vw,4.75rem)] w-auto sm:h-[clamp(3.25rem,9vw,5.25rem)]"
+                  className="h-[clamp(2rem,8vw,3.25rem)] w-auto sm:h-[clamp(2.35rem,7vw,4rem)]"
                   priority
                 />
-                <p className="max-w-lg px-1 font-[family-name:var(--font-instrument-serif)] text-[clamp(0.95rem,2.8vw,1.35rem)] italic leading-snug text-[var(--excelia-forest)]">
-                  We grow Carribbean Roots
+                <p className="max-w-lg px-1 font-[family-name:var(--font-instrument-serif)] text-[clamp(0.8rem,2.4vw,1.2rem)] italic leading-snug text-[var(--excelia-forest)] sm:text-[clamp(0.95rem,2.8vw,1.35rem)]">
+                  We grow Caribbean Roots
                 </p>
               </motion.div>
             )}
