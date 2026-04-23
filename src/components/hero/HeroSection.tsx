@@ -64,7 +64,7 @@ export function HeroSection({
         <div
           className={`relative z-[1] flex flex-1 flex-col px-3 pb-8 pt-4 sm:px-6 sm:pb-12 sm:pt-5 lg:px-10 ${
             navReveal
-              ? "pt-[4.5rem] sm:pt-[5.75rem] md:pt-[6rem] lg:pt-[6.5rem]"
+              ? "pt-[3.85rem] sm:pt-[5rem] md:pt-[5.35rem] lg:pt-[5.75rem]"
               : ""
           }`}
         >

@@ -62,7 +62,7 @@ type SiteHeaderProps = {
 export function SiteHeader({ visible }: SiteHeaderProps) {
   return (
     <motion.header
-      className="fixed left-0 right-0 top-3 z-[2147483000] flex justify-center px-3 sm:top-4 sm:px-5 lg:top-5 lg:px-8"
+      className="fixed left-0 right-0 top-2 z-[2147483000] flex justify-center px-3 sm:top-3 sm:px-5 lg:top-4 lg:px-8"
       initial={false}
       animate={{
         opacity: visible ? 1 : 0,
@@ -77,7 +77,7 @@ export function SiteHeader({ visible }: SiteHeaderProps) {
       aria-hidden={!visible}
     >
       <nav
-        className="grid w-full max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-x-2 gap-y-1 rounded-[14px] bg-white px-2 py-2 shadow-[0_12px_40px_rgba(45,77,54,0.14)] sm:gap-x-3 sm:rounded-[16px] sm:px-4 sm:py-3 md:px-5 md:py-3.5"
+        className="grid w-full max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-x-2 gap-y-1 rounded-[14px] bg-white px-2 py-1 shadow-[0_12px_40px_rgba(45,77,54,0.14)] sm:gap-x-3 sm:rounded-[16px] sm:px-4 sm:py-1.5 md:px-5 md:py-2"
         aria-label="Primary"
       >
         <ul className="flex min-w-0 flex-wrap items-center justify-self-start gap-x-2 gap-y-0.5 font-[family-name:var(--font-barlow)] text-[10px] font-semibold leading-tight sm:gap-x-5 sm:text-sm md:text-[15px]">

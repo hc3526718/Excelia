@@ -41,7 +41,8 @@ export function StorySection() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.96", "start 0.58"],
+    /** Finish word reveal once the section reaches mid-viewport (was slower / lower on screen). */
+    offset: ["start end", "start center"],
   });
 
   const words = useMemo(() => STORY.split(/\s+/).filter(Boolean), []);

@@ -78,47 +78,49 @@ const FOOTER_SOCIAL = [
   },
 ];
 
+const footerLinkClass =
+  "text-[var(--excelia-forest)] underline-offset-4 opacity-90 transition-[opacity,text-decoration-color] hover:opacity-70 hover:underline";
+
 function SiteFooterExplore() {
   return (
     <div className="border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] px-3 pb-12 pt-10 text-[var(--excelia-forest)] sm:px-8 sm:pb-14 sm:pt-12">
       <div className="mx-auto max-w-6xl">
-        <nav
-          className="font-[family-name:var(--font-barlow)] text-xs text-[var(--excelia-forest)] sm:text-sm"
-          aria-label="Explore"
-        >
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--excelia-gold)] sm:text-xs">
-            Explore
-          </p>
-          <ul className="mt-3 flex flex-col gap-2">
-            {FOOTER_EXPLORE_LINKS.map((item) => (
-              <li key={item.href}>
-                <Link
-                  className="text-[var(--excelia-forest)] opacity-90 transition-opacity hover:opacity-70"
-                  href={item.href}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="grid gap-10 sm:grid-cols-2 sm:gap-x-16 lg:gap-x-28">
+          <nav
+            className="font-[family-name:var(--font-barlow)] text-xs text-[var(--excelia-forest)] sm:text-sm"
+            aria-label="Explore"
+          >
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--excelia-gold)] sm:text-xs">
+              Explore
+            </p>
+            <ul className="mt-3 flex flex-col gap-2">
+              {FOOTER_EXPLORE_LINKS.map((item) => (
+                <li key={item.href}>
+                  <Link className={footerLinkClass} href={item.href}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <div className="mt-10 border-t border-[var(--excelia-stone)]/35 pt-8">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--excelia-gold)] sm:text-xs">
-            Legal
-          </p>
-          <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2 font-[family-name:var(--font-barlow)] text-xs sm:text-sm">
-            {FOOTER_LEGAL_LINKS.map((item) => (
-              <li key={item.href}>
-                <Link
-                  className="text-[var(--excelia-forest)] opacity-90 underline-offset-4 transition-opacity hover:opacity-70 hover:underline"
-                  href={item.href}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <nav
+            className="font-[family-name:var(--font-barlow)] text-xs text-[var(--excelia-forest)] sm:text-sm"
+            aria-label="Legal"
+          >
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--excelia-gold)] sm:text-xs">
+              Legal
+            </p>
+            <ul className="mt-3 flex flex-col gap-2">
+              {FOOTER_LEGAL_LINKS.map((item) => (
+                <li key={item.href}>
+                  <Link className={footerLinkClass} href={item.href}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
 
         <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-[var(--excelia-stone)]/35 pt-8">
