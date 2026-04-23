@@ -18,18 +18,21 @@ const STICKERS = [
     alt: "Island sticker",
     rotateDeg: -11,
     width: 156,
+    yOffsetPx: -6,
   },
   {
     src: "/assets/Flag_Sticker.png",
     alt: "Flag sticker",
     rotateDeg: 13,
     width: 156,
+    yOffsetPx: 5,
   },
   {
     src: "/assets/Logo_Sticker.png",
     alt: "Logo sticker",
     rotateDeg: -9,
     width: 156,
+    yOffsetPx: -2,
   },
 ];
 
@@ -140,6 +143,7 @@ function ContactFooter() {
                     alt={s.alt}
                     width={s.width}
                     rotateDeg={s.rotateDeg}
+                    yOffsetPx={s.yOffsetPx}
                   />
                 ))}
               </div>
