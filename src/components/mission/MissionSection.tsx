@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { PAGE_CONTAINER_CLASS } from "@/lib/pageLayout";
 
 const MISSION_SHORT =
   "Nutmeg shells carry a parish name when they leave Grenada. We route them into soil where they belong, alongside growers who still live from the trees. Gardens feel the difference in texture and story.";
@@ -10,9 +11,11 @@ export function MissionSection() {
   return (
     <section
       id="why-excelia"
-      className="relative isolate z-0 scroll-mt-28 bg-[var(--excelia-forest)] px-3 py-16 sm:px-8 sm:py-20 lg:px-12"
+      className="relative isolate z-0 scroll-mt-28 bg-[var(--excelia-forest)] py-16 sm:py-20 lg:py-24"
     >
-      <div className="mx-auto grid max-w-6xl gap-10 overflow-hidden rounded-2xl border border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] shadow-[0_22px_55px_rgba(45,77,54,0.07)] lg:grid-cols-3 lg:items-stretch lg:gap-0">
+      <div
+        className={`${PAGE_CONTAINER_CLASS} grid gap-10 overflow-hidden rounded-2xl border border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] shadow-[0_22px_55px_rgba(45,77,54,0.07)] lg:grid-cols-3 lg:items-stretch lg:gap-0`}
+      >
         <div className="relative min-h-[280px] overflow-hidden rounded-t-2xl lg:col-span-1 lg:min-h-full lg:rounded-l-2xl lg:rounded-tr-none">
           <Image
             src="/assets/NutmegImg.jpg"

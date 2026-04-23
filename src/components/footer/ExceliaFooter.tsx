@@ -9,9 +9,9 @@ import {
   IconX,
   IconYouTube,
 } from "@/components/footer/SocialIcons";
+import { PAGE_CONTAINER_CLASS } from "@/lib/pageLayout";
 
-export const PAGE_CONTAINER_CLASS =
-  "mx-auto w-full max-w-6xl px-3 sm:px-8 lg:px-12";
+export { PAGE_CONTAINER_CLASS };
 
 const STICKERS = [
   {
@@ -79,7 +79,7 @@ const footerLinkClass =
 
 export function ExceliaFooterExplore() {
   return (
-    <div className="border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] px-3 pb-12 pt-10 text-[var(--excelia-forest)] sm:px-8 sm:pb-14 sm:pt-12">
+    <div className="border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] pb-12 pt-10 text-[var(--excelia-forest)] sm:pb-14 sm:pt-12">
       <div className={PAGE_CONTAINER_CLASS}>
         <div className="grid gap-10 sm:grid-cols-2 sm:gap-x-16 lg:gap-x-28">
           <nav
@@ -154,7 +154,7 @@ export function ExceliaContactStrip() {
   return (
     <div
       id="contact"
-      className="scroll-mt-20 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-forest)] px-3 py-10 text-[var(--excelia-cream)] sm:scroll-mt-24 sm:px-8 sm:py-12"
+      className="scroll-mt-20 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-forest)] py-10 text-[var(--excelia-cream)] sm:scroll-mt-24 sm:py-12"
     >
       <div
         className={`${PAGE_CONTAINER_CLASS} grid gap-12 lg:grid-cols-[minmax(0,min(28rem,100%))_auto] lg:items-end lg:gap-x-16 xl:gap-x-24`}
@@ -196,7 +196,7 @@ export function ExceliaContactStrip() {
         </div>
 
         <div className="min-w-0 max-w-[100%] overflow-visible lg:justify-self-end">
-          <div className="-mx-3 overflow-x-auto overflow-y-visible px-3 pb-1 sm:mx-0 sm:overflow-visible sm:pb-0 lg:mx-0">
+          <div className="-mx-4 overflow-x-auto overflow-y-visible px-4 pb-1 sm:mx-0 sm:overflow-visible sm:pb-0 lg:mx-0">
             <div className="flex min-w-min flex-nowrap items-end justify-end gap-0.5 lg:gap-px">
               {STICKERS.map((s) => (
                 <ContactSticker

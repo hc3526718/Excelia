@@ -1,4 +1,4 @@
-import { PAGE_CONTAINER_CLASS } from "@/components/footer/ExceliaFooter";
+import { PAGE_CONTAINER_CLASS } from "@/lib/pageLayout";
 
 type PageSectionProps = {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ type PageSectionProps = {
   innerClassName?: string;
 };
 
-/** Matches footer / contact strip: each section’s content sits in `mx-auto max-w-6xl px-3 sm:px-8 lg:px-12`. */
+/** Matches footer inner column: `.excelia-page-container` + `max-w-6xl` (see `globals.css`). */
 export function PageSection({
   children,
   className = "",

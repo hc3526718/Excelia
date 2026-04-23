@@ -1,4 +1,4 @@
-import { PAGE_CONTAINER_CLASS } from "@/components/footer/ExceliaFooter";
+import { PAGE_CONTAINER_CLASS } from "@/lib/pageLayout";
 
 type PageGreenBandProps = {
   children: React.ReactNode;

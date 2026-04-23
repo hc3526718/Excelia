@@ -7,6 +7,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { useMemo, useRef } from "react";
+import { PAGE_CONTAINER_CLASS } from "@/lib/pageLayout";
 
 const STORY =
   "Excelia turns shells left from spice harvest into a soil topper that feeds life in the bed, steadies structure, and gives plantings a clear, natural surface.";
@@ -51,23 +52,25 @@ export function StorySection() {
     <section
       ref={ref}
       id="story"
-      className="relative isolate z-0 scroll-mt-20 border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] px-3 py-10 sm:scroll-mt-24 sm:px-8 sm:py-14 lg:px-12"
+      className="relative isolate z-0 scroll-mt-20 border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] py-10 sm:scroll-mt-24 sm:py-14"
     >
-      <div className="mx-auto max-w-5xl text-center">
-        <p className="inline-block max-w-full text-center">
-          <span className="inline-flex max-w-full flex-wrap justify-center gap-x-2 gap-y-2 [text-wrap:balance]">
-            {words.map((word, i) => (
-              <StoryWord
-                key={`${word}-${i}`}
-                progress={scrollYProgress}
-                index={i}
-                total={words.length}
-              >
-                {word}
-              </StoryWord>
-            ))}
-          </span>
-        </p>
+      <div className={PAGE_CONTAINER_CLASS}>
+        <div className="mx-auto max-w-5xl text-center">
+          <p className="inline-block max-w-full text-center">
+            <span className="inline-flex max-w-full flex-wrap justify-center gap-x-2 gap-y-2 [text-wrap:balance]">
+              {words.map((word, i) => (
+                <StoryWord
+                  key={`${word}-${i}`}
+                  progress={scrollYProgress}
+                  index={i}
+                  total={words.length}
+                >
+                  {word}
+                </StoryWord>
+              ))}
+            </span>
+          </p>
+        </div>
       </div>
     </section>
   );

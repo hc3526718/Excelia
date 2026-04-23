@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { PAGE_CONTAINER_CLASS } from "@/lib/pageLayout";
 
 const PILLARS = [
   {
@@ -28,9 +29,11 @@ export function PillarsSection() {
   return (
     <section
       id="pillars"
-      className="relative isolate z-0 scroll-mt-24 border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] px-3 py-16 sm:px-8 lg:px-12"
+      className="relative isolate z-0 scroll-mt-24 border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] py-16"
     >
-      <div className="mx-auto grid max-w-6xl gap-14 md:grid-cols-3 md:gap-12 lg:gap-16">
+      <div
+        className={`${PAGE_CONTAINER_CLASS} grid gap-14 md:grid-cols-3 md:gap-12 lg:gap-16`}
+      >
         {PILLARS.map((item) => (
           <article
             key={item.kicker}

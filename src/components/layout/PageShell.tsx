@@ -8,7 +8,7 @@ export function PageShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <SiteHeader visible />
-      <div className="min-h-screen bg-[var(--excelia-cream)] pt-24 pb-0 sm:pt-28 sm:pb-0 lg:pt-32">
+      <div className="min-h-screen overflow-x-clip bg-[var(--excelia-cream)] pt-24 pb-0 sm:pt-28 sm:pb-0 lg:pt-32">
         {children}
       </div>
       <ExceliaFullFooter />

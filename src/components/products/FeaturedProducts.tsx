@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PAGE_CONTAINER_CLASS } from "@/lib/pageLayout";
 
 const PRODUCTS = [
   {
@@ -19,9 +20,11 @@ export function FeaturedProducts() {
   return (
     <section
       id="featured-products"
-      className="relative isolate z-0 scroll-mt-24 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-cream)] px-3 py-24 sm:px-8 lg:px-12"
+      className="relative isolate z-0 scroll-mt-24 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-cream)] py-24"
     >
-      <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[minmax(0,340px)_1fr] lg:items-start lg:gap-16">
+      <div
+        className={`${PAGE_CONTAINER_CLASS} grid gap-14 lg:grid-cols-[minmax(0,340px)_1fr] lg:items-start lg:gap-16`}
+      >
         <div className="max-w-lg space-y-6">
           <p className="font-[family-name:var(--font-barlow)] text-xs font-semibold uppercase tracking-[0.25em] text-[var(--excelia-tan)]">
             Natural nutmeg shells
