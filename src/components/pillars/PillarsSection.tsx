@@ -6,21 +6,21 @@ const PILLARS = [
     icon: "/assets/Basket.png",
     alt: "Basket icon",
     body:
-      "Sourced from Grenadian estates where volcanic soil produces mineral-dense nutmeg shells.",
+      "Sourced from nutmeg estates in Grenada — the world’s second-largest nutmeg producer — where shells would otherwise be discarded after spice harvesting.",
   },
   {
     kicker: "SUN-CURED",
     icon: "/assets/Sun.png",
     alt: "Sun icon",
     body:
-      "Air-dried under Caribbean sun to preserve the shell's natural porosity and nutrient content.",
+      "Naturally dried under the Caribbean sun, preserving the shell’s aromatic oils and structural integrity.",
   },
   {
-    kicker: "FEEDS YOUR SOIL",
+    kicker: "FULLY COMPOSTABLE",
     icon: "/assets/Hand.png",
     alt: "Hand icon",
     body:
-      "Releases potassium, calcium, and magnesium slowly, supporting root health and soil structure for months.",
+      "Unlike gravel or plastic alternatives, shells break down gradually into the soil, returning nutrients and leaving nothing behind.",
   },
 ];
 

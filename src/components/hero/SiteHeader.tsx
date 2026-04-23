@@ -82,28 +82,28 @@ export function SiteHeader({ visible }: SiteHeaderProps) {
       >
         <ul className="flex min-w-0 flex-wrap items-center justify-self-start gap-x-2 gap-y-0.5 font-[family-name:var(--font-barlow)] text-[10px] font-semibold leading-tight sm:gap-x-5 sm:text-sm md:text-[15px]">
           <li>
-            <a
+            <Link
               className="text-[var(--excelia-rust)] transition-opacity hover:opacity-75"
-              href="#about"
+              href="/about"
             >
               About
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               className="text-[var(--excelia-rust)] transition-opacity hover:opacity-75"
-              href="#mission"
+              href="/our-impact"
             >
-              Mission
-            </a>
+              Why Excelia
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               className="text-[var(--excelia-rust)] transition-opacity hover:opacity-75"
-              href="#contact"
+              href="/contact"
             >
               Contact
-            </a>
+            </Link>
           </li>
         </ul>
 
@@ -126,19 +126,19 @@ export function SiteHeader({ visible }: SiteHeaderProps) {
           >
             <UserIcon className="size-4 sm:size-5" />
           </button>
-          <button
-            type="button"
+          <Link
+            href="/shop"
             className="inline-flex size-8 shrink-0 items-center justify-center rounded-full text-[var(--excelia-rust)] transition-colors hover:bg-black/[0.04] sm:size-10"
-            aria-label="Shopping basket"
+            aria-label="Shop"
           >
             <BasketIcon className="size-4 sm:size-5" />
-          </button>
-          <a
-            href="#shop"
+          </Link>
+          <Link
+            href="/shop"
             className="inline-flex min-h-8 shrink-0 items-center justify-center rounded-full bg-[var(--excelia-rust)] px-2.5 py-1.5 font-[family-name:var(--font-barlow)] text-[10px] font-semibold leading-none text-white shadow-sm transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-md sm:min-h-10 sm:px-5 sm:text-sm md:px-6 md:text-[15px]"
           >
             Shop Now
-          </a>
+          </Link>
         </div>
       </nav>
     </motion.header>

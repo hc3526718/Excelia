@@ -35,7 +35,7 @@ export function HeroSection({
 
   return (
       <section
-        id="about"
+        id="home-hero"
         className="relative flex min-h-[100svh] flex-col overflow-hidden bg-[var(--excelia-cream)]"
       >
         <div
@@ -85,7 +85,7 @@ export function HeroSection({
             </h1>
 
             <Link
-              href="#products"
+              href="/shop"
               className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 font-[family-name:var(--font-barlow)] text-[13px] font-semibold text-[var(--excelia-forest)] shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_20px_48px_rgba(0,0,0,0.22)] sm:mt-10 sm:px-10 sm:py-4 sm:text-lg md:px-12 md:py-[1.2rem] md:text-xl"
             >
               Start from the topper

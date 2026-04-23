@@ -42,10 +42,10 @@ const STICKERS = [
 ];
 
 const FOOTER_EXPLORE_LINKS = [
-  { href: "#about", label: "About" },
-  { href: "#mission", label: "Mission" },
-  { href: "#contact", label: "Contact" },
-  { href: "#shop", label: "Shop Now" },
+  { href: "/about", label: "About" },
+  { href: "/our-impact", label: "Why Excelia" },
+  { href: "/contact", label: "Contact" },
+  { href: "/shop", label: "Shop" },
 ];
 
 const FOOTER_LEGAL_LINKS = [
