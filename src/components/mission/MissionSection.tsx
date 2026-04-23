@@ -39,7 +39,7 @@ export function MissionSection() {
           </p>
           <Link
             href="/our-impact"
-            className="mt-10 inline-flex w-fit items-center rounded-full border border-[var(--excelia-forest)]/35 px-6 py-3 font-[family-name:var(--font-barlow)] text-sm font-semibold text-[var(--excelia-forest)] transition-colors hover:bg-[var(--excelia-forest)]/08"
+            className="mt-10 inline-flex w-fit items-center rounded-full border border-[var(--excelia-forest)]/35 px-6 py-3 font-[family-name:var(--font-barlow)] text-sm font-semibold text-[var(--excelia-forest)] transition-[transform,background-color] duration-300 ease-out hover:-translate-y-0.5 hover:bg-[var(--excelia-forest)]/08"
           >
             Read our impact
           </Link>

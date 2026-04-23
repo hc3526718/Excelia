@@ -48,7 +48,7 @@ export function FeaturedProducts() {
           {PRODUCTS.map((product) => (
             <article
               key={product.name}
-              className="flex flex-col rounded-2xl border border-[var(--excelia-stone)]/50 bg-white/70 p-8 shadow-[0_18px_50px_rgba(45,77,54,0.08)] backdrop-blur-sm transition-[transform,box-shadow] hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(45,77,54,0.12)]"
+              className="flex flex-col rounded-2xl border border-[var(--excelia-stone)]/50 bg-white/70 p-8 shadow-[0_18px_50px_rgba(45,77,54,0.08)] backdrop-blur-sm transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(45,77,54,0.12)]"
             >
               <p className="font-[family-name:var(--font-barlow)] text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--excelia-tan)]">
                 {product.weight}

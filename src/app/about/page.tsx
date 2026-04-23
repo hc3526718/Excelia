@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <PageShell>
-      <PageGreenBand className="pt-6 sm:pt-8">
+      <PageGreenBand bleedTop>
         <p className="font-[family-name:var(--font-barlow)] text-xs font-semibold uppercase tracking-[0.28em] text-[var(--excelia-gold)]">
           About
         </p>
@@ -27,7 +27,7 @@ export default function AboutPage() {
         </p>
       </PageGreenBand>
 
-      <PageSection className="pt-12 lg:pt-16">
+      <PageSection className="pt-8 lg:pt-12">
         <div className="relative mt-2 overflow-hidden rounded-2xl border border-[var(--excelia-stone)]/40 bg-[#3d2f28] shadow-[0_28px_80px_rgba(45,77,54,0.2)]">
           <div
             className="absolute inset-0 opacity-[0.14] mix-blend-overlay"
@@ -54,7 +54,7 @@ export default function AboutPage() {
         </div>
       </PageSection>
 
-      <PageSection className="mt-10">
+      <PageSection className="mt-6">
         <div className="prose prose-neutral max-w-none font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-forest)] prose-p:mb-5 sm:text-base">
           <p className="text-lg font-medium sm:text-xl">
             <strong>Catherine Excelia Baptiste</strong> was born in{" "}
@@ -72,11 +72,11 @@ export default function AboutPage() {
         </div>
       </PageSection>
 
-      <PageSection className="py-2 sm:py-4">
+      <PageSection className="py-1">
         <HeritageRule label="Nutmeg heritage" />
       </PageSection>
 
-      <PageSection className="mt-10 border-t border-[var(--excelia-stone)]/35 pt-14 sm:mt-12 sm:pt-16">
+      <PageSection className="mt-6 border-t border-[var(--excelia-stone)]/35 pt-10 sm:mt-8 sm:pt-12">
         <section aria-labelledby="act2-heading">
           <h2
             id="act2-heading"
@@ -101,11 +101,11 @@ export default function AboutPage() {
         </section>
       </PageSection>
 
-      <PageSection className="py-2 sm:py-4">
+      <PageSection className="py-1">
         <HeritageRule />
       </PageSection>
 
-      <PageSection className="mt-10 border-t border-[var(--excelia-stone)]/35 pb-24 pt-14 sm:mt-12 sm:pt-16">
+      <PageSection className="mt-6 border-t border-[var(--excelia-stone)]/35 pb-24 pt-10 sm:mt-8 sm:pt-12">
         <section aria-labelledby="act3-heading">
           <h2
             id="act3-heading"

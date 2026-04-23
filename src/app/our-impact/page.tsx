@@ -38,7 +38,7 @@ const PILLAR_ICONS = [
 export default function OurImpactPage() {
   return (
     <PageShell>
-      <PageGreenBand className="pt-6 sm:pt-8">
+      <PageGreenBand bleedTop>
         <p className="font-[family-name:var(--font-barlow)] text-xs font-semibold uppercase tracking-[0.28em] text-[var(--excelia-gold)]">
           Why Excelia
         </p>
@@ -52,7 +52,7 @@ export default function OurImpactPage() {
         </p>
       </PageGreenBand>
 
-      <PageSection className="pt-12 lg:pt-16">
+      <PageSection className="pt-8 lg:pt-12">
         <section aria-labelledby="problem-heading">
           <h2
             id="problem-heading"
@@ -81,11 +81,11 @@ export default function OurImpactPage() {
         </section>
       </PageSection>
 
-      <PageSection className="py-2 sm:py-4">
+      <PageSection className="py-1">
         <HeritageRule label="Botanical heritage" />
       </PageSection>
 
-      <PageSection className="mt-6">
+      <PageSection className="mt-4">
         <section aria-labelledby="answer-heading">
           <h2
             id="answer-heading"
@@ -125,11 +125,11 @@ export default function OurImpactPage() {
         </section>
       </PageSection>
 
-      <PageSection className="py-2 sm:py-4">
+      <PageSection className="py-1">
         <HeritageRule />
       </PageSection>
 
-      <PageSection className="mt-10 border-t border-[var(--excelia-stone)]/35 pt-14 sm:mt-12 sm:pt-16">
+      <PageSection className="mt-6 border-t border-[var(--excelia-stone)]/35 pt-10 sm:mt-8 sm:pt-12">
         <section aria-labelledby="community-heading">
           <h2
             id="community-heading"
@@ -154,7 +154,7 @@ export default function OurImpactPage() {
         </section>
       </PageSection>
 
-      <PageSection className="mt-10">
+      <PageSection className="mt-6">
         <figure className="relative overflow-hidden rounded-2xl border border-[var(--excelia-stone)]/45 bg-[var(--excelia-forest)]/08 shadow-[0_22px_55px_rgba(45,77,54,0.12)]">
           <div className="relative aspect-[16/10] w-full max-h-[420px] sm:max-h-[480px]">
             <Image
@@ -172,7 +172,7 @@ export default function OurImpactPage() {
         </figure>
       </PageSection>
 
-      <PageSection className="mt-20 pb-28 scroll-mt-24 sm:mt-24">
+      <PageSection className="mt-12 pb-28 scroll-mt-24 sm:mt-16">
         <section
           className="rounded-2xl border border-[var(--excelia-stone)]/40 bg-white/60 p-6 shadow-[0_18px_45px_rgba(45,77,54,0.06)] sm:p-10"
           aria-labelledby="pod-heading"

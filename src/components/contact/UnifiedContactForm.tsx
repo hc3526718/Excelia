@@ -102,7 +102,7 @@ export function UnifiedContactForm() {
           id="contact-category"
           value={category}
           onChange={(e) => setCategory(e.target.value as ContactCategory)}
-          className="mt-2 w-full max-w-lg rounded-xl border border-[var(--excelia-stone)]/55 bg-white px-4 py-3 font-[family-name:var(--font-barlow)] text-[15px] outline-none focus:border-[var(--excelia-forest)]/45"
+          className="mt-3 w-full max-w-lg rounded-xl border border-[var(--excelia-stone)]/55 bg-white px-4 py-3 font-[family-name:var(--font-barlow)] text-[15px] outline-none focus:border-[var(--excelia-forest)]/45"
         >
           <option value="gardener">
             Comments, questions, help, or queries from gardeners
@@ -113,13 +113,13 @@ export function UnifiedContactForm() {
           <option value="press">Press and partnerships</option>
           <option value="more">More</option>
         </select>
-        <p className="mt-2 text-[13px] leading-snug text-[var(--excelia-olive)]">
+        <p className="mt-5 text-[13px] leading-snug text-[var(--excelia-olive)]">
           {helpText}
         </p>
       </div>
 
       {category === "gardener" && (
-        <div>
+        <div className="mt-8">
           <label
             htmlFor="gardener-topic"
             className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--excelia-tan)]"
@@ -141,7 +141,7 @@ export function UnifiedContactForm() {
       )}
 
       {category === "more" && (
-        <div>
+        <div className="mt-8">
           <label
             htmlFor="more-topic"
             className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--excelia-tan)]"
@@ -196,7 +196,7 @@ export function UnifiedContactForm() {
       </div>
 
       {category === "trade" && (
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
           <div className="sm:col-span-2">
             <label
               htmlFor="trade-business"

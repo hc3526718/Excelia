@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <PageShell>
-      <PageGreenBand className="pt-6 sm:pt-8">
+      <PageGreenBand bleedTop>
         <p className="font-[family-name:var(--font-barlow)] text-xs font-semibold uppercase tracking-[0.28em] text-[var(--excelia-gold)]">
           Contact
         </p>
@@ -26,7 +26,7 @@ export default function ContactPage() {
         </p>
       </PageGreenBand>
 
-      <PageSection className="pb-28 pt-12 lg:pt-16">
+      <PageSection className="pb-28 pt-8 lg:pt-12">
         <p className="font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-forest)] sm:text-base">
           Pick the reason that fits, add your details, and send. Your client
           opens with a draft you can edit before it goes.

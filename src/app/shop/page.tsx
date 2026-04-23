@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { PageGreenBand } from "@/components/layout/PageGreenBand";
 import { PageSection } from "@/components/layout/PageSection";
 import { PageShell } from "@/components/layout/PageShell";
 import { CoverageCalculator } from "@/components/shop/CoverageCalculator";
@@ -42,7 +43,7 @@ function ProductBlock({
   product: (typeof PRODUCTS)[number];
 }) {
   return (
-    <article className="overflow-hidden rounded-3xl border border-[var(--excelia-stone)]/45 bg-white/75 shadow-[0_28px_70px_rgba(45,77,54,0.1)]">
+    <article className="overflow-hidden rounded-3xl border border-[var(--excelia-stone)]/45 bg-white/75 shadow-[0_28px_70px_rgba(45,77,54,0.1)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_32px_80px_rgba(45,77,54,0.14)]">
       <div className="grid gap-0 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
         <div className="relative aspect-[5/4] min-h-[280px] bg-[var(--excelia-cream)] lg:aspect-auto lg:min-h-[420px]">
           <Image
@@ -135,20 +136,20 @@ function ProductBlock({
 export default function ShopPage() {
   return (
     <PageShell>
-      <PageSection className="pt-12 lg:pt-16">
-        <p className="font-[family-name:var(--font-barlow)] text-xs font-semibold uppercase tracking-[0.28em] text-[var(--excelia-tan)]">
+      <PageGreenBand bleedTop>
+        <p className="font-[family-name:var(--font-barlow)] text-xs font-semibold uppercase tracking-[0.28em] text-[var(--excelia-gold)]">
           Shop
         </p>
-        <h1 className="mt-3 max-w-2xl font-[family-name:var(--font-instrument-serif)] text-4xl italic leading-tight text-[var(--excelia-forest)] sm:text-5xl">
+        <h1 className="mt-3 max-w-2xl font-[family-name:var(--font-instrument-serif)] text-4xl italic leading-tight sm:text-5xl">
           Natural nutmeg shells
         </h1>
-        <p className="mt-6 max-w-2xl font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-[var(--excelia-olive)] sm:text-base">
+        <p className="mt-6 max-w-2xl font-[family-name:var(--font-barlow)] text-[15px] leading-relaxed text-white/88 sm:text-base">
           Two weights, one shell from Grenadian harvests. Imagery below is a
           stand in until the hessian sack shot from slide seven exports.
         </p>
-      </PageSection>
+      </PageGreenBand>
 
-      <PageSection className="mt-14 lg:mt-16">
+      <PageSection className="mt-8 lg:mt-10">
         <div className="space-y-16 lg:space-y-20">
           {PRODUCTS.map((p) => (
             <ProductBlock key={p.sku} product={p} />
