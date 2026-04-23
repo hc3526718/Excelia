@@ -123,7 +123,7 @@ export function IntroSequence({
                 className="flex flex-col items-center gap-0.5 sm:gap-0.5"
               >
                 <Image
-                  src="/assets/Excelia_Name.png"
+                  src="/assets/Excelia_Name.svg"
                   alt="Excelia"
                   width={640}
                   height={128}

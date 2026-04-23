@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { type FormEvent, useCallback, useState } from "react";
@@ -22,7 +23,6 @@ const STICKERS = [
     shadowIntensity: 0.58,
     lightingIntensity: 0.11,
     initialPosition: { x: 6, y: 8 } as const,
-    /** Stagger on the Y axis (realistic scatter) */
     yNudgePx: 0,
     width: 208,
   },
@@ -52,6 +52,86 @@ const STICKERS = [
   },
 ];
 
+const FOOTER_EXPLORE_LINKS = [
+  { href: "#about", label: "About" },
+  { href: "#mission", label: "Mission" },
+  { href: "#contact", label: "Contact" },
+  { href: "#shop", label: "Shop Now" },
+];
+
+function FooterBrandStickerSection() {
+  return (
+    <section
+      className="relative overflow-x-hidden border-t border-white/20 bg-[var(--excelia-forest)] pb-14 pt-4 text-[var(--excelia-cream)] sm:pb-16 sm:pt-6"
+      aria-label="Excelia emblem, site links, and stickers"
+    >
+      {/* Full-bleed logo (emblem) — spans viewport width */}
+      <div className="relative mx-auto mb-10 w-full sm:mb-12 md:mb-14">
+        <Image
+          src="/assets/Excelia_Logo.png"
+          alt="Excelia emblem"
+          width={1800}
+          height={720}
+          sizes="100vw"
+          className="mx-auto block h-auto w-full max-h-[min(52vh,560px)] object-contain object-center px-2 sm:px-4"
+        />
+      </div>
+
+      <div className="mx-auto max-w-6xl px-3 sm:px-8">
+        <nav
+          className="border-t border-white/15 pt-8 font-[family-name:var(--font-barlow)] text-xs text-white/90 sm:text-sm"
+          aria-label="Explore"
+        >
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--excelia-gold)] sm:text-xs">
+            Explore
+          </p>
+          <ul className="mt-3 flex flex-col gap-2">
+            {FOOTER_EXPLORE_LINKS.map((item) => (
+              <li key={item.href}>
+                <Link
+                  className="transition-opacity hover:opacity-75"
+                  href={item.href}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="relative mt-12 flex w-full min-w-0 justify-center sm:mt-14 lg:justify-end">
+          <div className="flex max-w-full flex-wrap items-start justify-center gap-x-5 gap-y-6 sm:gap-x-8 sm:gap-y-10 lg:justify-end">
+            {STICKERS.map((s) => (
+              <div
+                key={s.src}
+                className="relative shrink-0"
+                style={{
+                  transform: `translateY(${s.yNudgePx}px)`,
+                  width: s.width + 64,
+                  height: s.width + 72,
+                }}
+              >
+                <StickerPeel
+                  imageSrc={s.src}
+                  width={s.width}
+                  rotate={s.rotate}
+                  peelBackHoverPct={s.peelBackHoverPct}
+                  peelBackActivePct={s.peelBackActivePct}
+                  shadowIntensity={s.shadowIntensity}
+                  lightingIntensity={s.lightingIntensity}
+                  initialPosition={s.initialPosition}
+                  peelDirection={s.peelDirection}
+                  className="left-0 top-0"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ContactFooter() {
   const [email, setEmail] = useState("");
 
@@ -67,16 +147,16 @@ function ContactFooter() {
   };
 
   return (
-    <footer
-      id="contact"
-      className="relative isolate z-0 scroll-mt-20 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-forest)] px-3 py-12 text-[var(--excelia-cream)] sm:scroll-mt-24 sm:px-8 sm:py-16"
-    >
-      <div className="mx-auto grid max-w-6xl gap-10 sm:gap-12 lg:grid-cols-2 lg:items-start lg:gap-12">
-        <div className="min-w-0 max-w-lg lg:max-w-none">
+    <footer className="relative isolate z-0 bg-[var(--excelia-forest)] text-[var(--excelia-cream)]">
+      <div
+        id="contact"
+        className="scroll-mt-20 border-t border-[var(--excelia-stone)]/40 px-3 py-12 sm:scroll-mt-24 sm:px-8 sm:py-16"
+      >
+        <div className="mx-auto max-w-6xl">
           <p className="font-[family-name:var(--font-barlow)] text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--excelia-gold)] sm:text-xs sm:tracking-[0.25em]">
             Contact
           </p>
-          <p className="mt-2 font-[family-name:var(--font-barlow)] text-[13px] leading-relaxed text-white/85 sm:mt-3 sm:text-sm">
+          <p className="mt-2 max-w-lg font-[family-name:var(--font-barlow)] text-[13px] leading-relaxed text-white/85 sm:mt-3 sm:text-sm">
             Partner with Excelia for nutmeg‑smart soil programs, allocation updates,
             and sustainability reporting—we reply to growers, retailers, and brand
             teams routing spice waste back to the ground.
@@ -106,80 +186,10 @@ function ContactFooter() {
               Submit
             </button>
           </form>
-
-          <nav
-            className="mt-8 border-t border-white/15 pt-6 font-[family-name:var(--font-barlow)] text-xs text-white/90 sm:text-sm"
-            aria-label="Footer"
-          >
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--excelia-gold)] sm:text-xs">
-              Explore
-            </p>
-            <ul className="mt-3 flex flex-col gap-2">
-              <li>
-                <Link
-                  className="transition-opacity hover:opacity-75"
-                  href="#about"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="transition-opacity hover:opacity-75"
-                  href="#mission"
-                >
-                  Mission
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="transition-opacity hover:opacity-75"
-                  href="#contact"
-                >
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="transition-opacity hover:opacity-75"
-                  href="#shop"
-                >
-                  Shop Now
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
-        <div className="relative -mt-2 flex w-full min-w-0 shrink-0 justify-end">
-          <div className="flex max-w-full flex-wrap items-start justify-end gap-x-5 gap-y-6 sm:gap-x-8 sm:gap-y-10">
-            {STICKERS.map((s) => (
-              <div
-                key={s.src}
-                className="relative shrink-0"
-                style={{
-                  transform: `translateY(${s.yNudgePx}px)`,
-                  width: s.width + 64,
-                  height: s.width + 72,
-                }}
-              >
-                <StickerPeel
-                  imageSrc={s.src}
-                  width={s.width}
-                  rotate={s.rotate}
-                  peelBackHoverPct={s.peelBackHoverPct}
-                  peelBackActivePct={s.peelBackActivePct}
-                  shadowIntensity={s.shadowIntensity}
-                  lightingIntensity={s.lightingIntensity}
-                  initialPosition={s.initialPosition}
-                  peelDirection={s.peelDirection}
-                  className="left-0 top-0"
-                />
-              </div>
-            ))}
-          </div>
         </div>
       </div>
+
+      <FooterBrandStickerSection />
     </footer>
   );
 }
@@ -219,7 +229,6 @@ export function LandingExperience() {
         </motion.div>
       )}
 
-      {/* Render last so fixed chrome paints above scrolling sections */}
       <SiteHeader visible={navReveal} />
     </>
   );

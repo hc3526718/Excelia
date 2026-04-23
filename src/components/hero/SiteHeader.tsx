@@ -113,7 +113,7 @@ export function SiteHeader({ visible }: SiteHeaderProps) {
           aria-label="Excelia home"
         >
           <Image
-            src="/assets/Excelia_Name.png"
+            src="/assets/Excelia_Name.svg"
             alt="Excelia"
             width={320}
             height={70}
