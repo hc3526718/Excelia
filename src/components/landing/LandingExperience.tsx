@@ -1,34 +1,54 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { type FormEvent, useCallback, useState } from "react";
 import { SiteHeader } from "@/components/hero/SiteHeader";
 import { HeroSection } from "@/components/hero/HeroSection";
+import StickerPeel from "@/components/stickers/StickerPeel";
 import { FeaturedProducts } from "@/components/products/FeaturedProducts";
 import { MissionSection } from "@/components/mission/MissionSection";
 import { PillarsSection } from "@/components/pillars/PillarsSection";
 import { StorySection } from "@/components/story/StorySection";
 
-/** Clockwise negative = counter-clockwise tilt; all within ±20° */
-const STICKER_TILTS_DEG = [-14, 18, -10] as const;
-
+/** Rotation while dragging follows pointer; resting rotate prop — within ±20° */
 const STICKERS = [
   {
     src: "/assets/Island_Sticker.png",
-    alt: "Island sticker",
-    tiltIndex: 0 as const,
+    rotate: -14,
+    peelDirection: 124,
+    peelBackHoverPct: 11,
+    peelBackActivePct: 70,
+    shadowIntensity: 0.58,
+    lightingIntensity: 0.11,
+    initialPosition: { x: 6, y: 8 } as const,
+    /** Stagger on the Y axis (realistic scatter) */
+    yNudgePx: 0,
+    width: 208,
   },
   {
     src: "/assets/Flag_Sticker.png",
-    alt: "Flag sticker",
-    tiltIndex: 1 as const,
+    rotate: 18,
+    peelDirection: 206,
+    peelBackHoverPct: 12,
+    peelBackActivePct: 68,
+    shadowIntensity: 0.55,
+    lightingIntensity: 0.1,
+    initialPosition: { x: -4, y: 14 } as const,
+    yNudgePx: 22,
+    width: 216,
   },
   {
     src: "/assets/Logo_Sticker.png",
-    alt: "Logo sticker",
-    tiltIndex: 2 as const,
+    rotate: -10,
+    peelDirection: 52,
+    peelBackHoverPct: 10,
+    peelBackActivePct: 72,
+    shadowIntensity: 0.62,
+    lightingIntensity: 0.09,
+    initialPosition: { x: 10, y: -4 } as const,
+    yNudgePx: -14,
+    width: 212,
   },
 ];
 
@@ -131,34 +151,29 @@ function ContactFooter() {
           </nav>
         </div>
 
-        <div className="relative flex w-full min-w-0 shrink-0 flex-col items-end gap-6 sm:gap-8">
-          <Link href="/" className="shrink-0">
-            <Image
-              src="/assets/Excelia_Name.png"
-              alt="Excelia"
-              width={520}
-              height={112}
-              className="h-auto w-[min(72vw,280px)] sm:w-[min(56vw,340px)] lg:w-[min(420px,38vw)]"
-              sizes="(max-width: 1024px) 72vw, 420px"
-            />
-          </Link>
-
-          <div className="flex w-full flex-col items-center gap-6 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-8 md:gap-10 lg:w-auto lg:flex-nowrap lg:justify-end">
+        <div className="relative -mt-2 flex w-full min-w-0 shrink-0 justify-end">
+          <div className="flex max-w-full flex-wrap items-start justify-end gap-x-5 gap-y-6 sm:gap-x-8 sm:gap-y-10">
             {STICKERS.map((s) => (
               <div
                 key={s.src}
-                className="pointer-events-none shrink-0"
+                className="relative shrink-0"
                 style={{
-                  transform: `rotate(${STICKER_TILTS_DEG[s.tiltIndex]}deg)`,
+                  transform: `translateY(${s.yNudgePx}px)`,
+                  width: s.width + 64,
+                  height: s.width + 72,
                 }}
               >
-                <Image
-                  src={s.src}
-                  alt={s.alt}
-                  width={320}
-                  height={320}
-                  className="h-auto w-[min(62vw,220px)] drop-shadow-[0_14px_26px_rgba(0,0,0,0.34)] sm:w-[240px] md:w-[260px] lg:w-[280px]"
-                  sizes="(max-width: 640px) 62vw, 280px"
+                <StickerPeel
+                  imageSrc={s.src}
+                  width={s.width}
+                  rotate={s.rotate}
+                  peelBackHoverPct={s.peelBackHoverPct}
+                  peelBackActivePct={s.peelBackActivePct}
+                  shadowIntensity={s.shadowIntensity}
+                  lightingIntensity={s.lightingIntensity}
+                  initialPosition={s.initialPosition}
+                  peelDirection={s.peelDirection}
+                  className="left-0 top-0"
                 />
               </div>
             ))}

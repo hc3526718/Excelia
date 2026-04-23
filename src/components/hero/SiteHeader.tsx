@@ -115,9 +115,9 @@ export function SiteHeader({ visible }: SiteHeaderProps) {
           <Image
             src="/assets/Excelia_Name.png"
             alt="Excelia"
-            width={220}
-            height={48}
-            className="h-[1.35rem] w-auto sm:h-9 md:h-10 lg:h-11"
+            width={320}
+            height={70}
+            className="h-[1.75rem] w-auto sm:h-12 md:h-14 lg:h-[3.5rem] xl:h-16"
             priority
           />
         </Link>
