@@ -75,7 +75,7 @@ export function IntroSequence({
         className={`relative mx-auto my-auto overflow-hidden ${panelBase} ${
           isBar
             ? "mt-0 h-[78px] w-[min(72rem,calc(100vw-2rem))] px-4 py-2 sm:px-5"
-            : "w-[min(460px,95vw)] max-h-[min(42svh,340px)] max-w-none px-5 pb-3 pt-3 sm:max-h-[min(46svh,380px)] sm:w-[min(500px,93vw)] sm:px-7 sm:pb-4 sm:pt-4"
+            : "w-[min(560px,96vw)] max-h-[min(78svh,720px)] max-w-none px-6 pb-14 pt-4 sm:w-[min(620px,94vw)] sm:max-h-[min(82svh,760px)] sm:px-10 sm:pb-16 sm:pt-5"
         }`}
         initial={false}
         animate={{
@@ -107,7 +107,7 @@ export function IntroSequence({
               alt=""
               width={520}
               height={160}
-              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(3.45rem,13vw,5.1rem)] sm:h-[clamp(3.75rem,12vw,5.75rem)]"}`}
+              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(6.9rem,26vw,10.2rem)] sm:h-[clamp(7.5rem,24vw,11.5rem)]"}`}
               priority
               aria-hidden
             />
@@ -125,9 +125,9 @@ export function IntroSequence({
               >
                 <ExceliaWordmark
                   priority
-                  className="h-[clamp(2.85rem,10vw,4.25rem)] w-auto sm:h-[clamp(3.1rem,9vw,5rem)]"
+                  className="h-[clamp(5.7rem,20vw,8.5rem)] w-auto sm:h-[clamp(6.2rem,18vw,10rem)]"
                 />
-                <p className="max-w-lg px-1 pt-1 font-[family-name:var(--font-instrument-serif)] text-[clamp(0.95rem,2.75vw,1.4rem)] italic leading-tight text-[var(--excelia-forest)] sm:pt-0.5 sm:text-[clamp(1.1rem,2.9vw,1.5rem)]">
+                <p className="max-w-lg px-1 pt-0.5 font-[family-name:var(--font-instrument-serif)] text-[clamp(1.9rem,5.5vw,2.8rem)] italic leading-[1.15] text-[var(--excelia-forest)] sm:pt-1 sm:text-[clamp(2.2rem,5.8vw,3rem)]">
                   We grow Caribbean Roots
                 </p>
               </motion.div>

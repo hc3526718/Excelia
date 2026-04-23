@@ -3,63 +3,35 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { type FormEvent, useCallback, useState } from "react";
+import { ContactSticker } from "@/components/contact/ContactSticker";
 import { ExceliaWordmark } from "@/components/brand/ExceliaWordmark";
 import { SiteHeader } from "@/components/hero/SiteHeader";
 import { HeroSection } from "@/components/hero/HeroSection";
-import StickerPeel from "@/components/stickers/StickerPeel";
 import { FeaturedProducts } from "@/components/products/FeaturedProducts";
 import { MissionSection } from "@/components/mission/MissionSection";
 import { PillarsSection } from "@/components/pillars/PillarsSection";
 import { StorySection } from "@/components/story/StorySection";
 
-/** Tight row: ~5px gap between sticker assets; minimal Y stagger; slight X offsets for separation */
 const STICKERS = [
   {
     src: "/assets/Island_Sticker.png",
-    rotate: -12,
-    peelDirection: 124,
-    peelBackHoverPct: 11,
-    peelBackActivePct: 70,
-    shadowIntensity: 0.58,
-    lightingIntensity: 0.11,
-    initialPosition: { x: 2, y: 1 } as const,
-    /** px — horizontal stagger (avoid overlap when rotated) */
-    xShiftPx: -6,
-    yNudgePx: 0,
-    width: 184,
+    alt: "Island sticker",
+    rotateDeg: -11,
+    width: 156,
   },
   {
     src: "/assets/Flag_Sticker.png",
-    rotate: 14,
-    peelDirection: 206,
-    peelBackHoverPct: 12,
-    peelBackActivePct: 68,
-    shadowIntensity: 0.55,
-    lightingIntensity: 0.1,
-    initialPosition: { x: 4, y: 0 } as const,
-    xShiftPx: 14,
-    yNudgePx: -2,
-    width: 184,
+    alt: "Flag sticker",
+    rotateDeg: 13,
+    width: 156,
   },
   {
     src: "/assets/Logo_Sticker.png",
-    rotate: -10,
-    peelDirection: 52,
-    peelBackHoverPct: 10,
-    peelBackActivePct: 72,
-    shadowIntensity: 0.62,
-    lightingIntensity: 0.09,
-    initialPosition: { x: 3, y: 2 } as const,
-    xShiftPx: 10,
-    yNudgePx: 2,
-    width: 184,
+    alt: "Logo sticker",
+    rotateDeg: -9,
+    width: 156,
   },
 ];
-
-/** Drag/peel bounds — minimal but enough for flap + drag */
-function stickerBoundsPx(w: number) {
-  return { bw: w + 18, bh: w + 22 };
-}
 
 const FOOTER_EXPLORE_LINKS = [
   { href: "#about", label: "About" },
@@ -121,8 +93,8 @@ function ContactFooter() {
         id="contact"
         className="scroll-mt-20 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-forest)] px-3 py-10 text-[var(--excelia-cream)] sm:scroll-mt-24 sm:px-8 sm:py-12"
       >
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start lg:gap-12">
-          <div className="min-w-0 max-w-lg lg:max-w-none">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[minmax(0,min(28rem,100%))_auto] lg:items-end lg:gap-x-16 xl:gap-x-24">
+          <div className="min-w-0 lg:max-w-none">
             <p className="font-[family-name:var(--font-barlow)] text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--excelia-gold)] sm:text-xs sm:tracking-[0.25em]">
               Contact
             </p>
@@ -158,37 +130,18 @@ function ContactFooter() {
             </form>
           </div>
 
-          <div className="min-w-0 overflow-visible lg:max-w-none lg:justify-self-end">
-            <div className="-mx-3 overflow-x-auto overflow-y-visible px-3 pb-1 sm:mx-0 sm:overflow-visible sm:pb-0">
-              <div className="flex min-w-min flex-nowrap items-end justify-center gap-[5px] overflow-visible sm:justify-end">
-              {STICKERS.map((s) => {
-                const { bw, bh } = stickerBoundsPx(s.width);
-                return (
-                  <div
+          <div className="min-w-0 max-w-[100%] overflow-visible lg:justify-self-end">
+            <div className="-mx-3 overflow-x-auto overflow-y-visible px-3 pb-1 sm:mx-0 sm:overflow-visible sm:pb-0 lg:mx-0">
+              <div className="flex min-w-min flex-nowrap items-end justify-end gap-0.5 lg:gap-px">
+                {STICKERS.map((s) => (
+                  <ContactSticker
                     key={s.src}
-                    className="relative shrink-0 overflow-visible"
-                    style={{
-                      width: bw,
-                      height: bh,
-                      transform: `translate(${s.xShiftPx}px, ${s.yNudgePx}px)`,
-                      zIndex: 1,
-                    }}
-                  >
-                    <StickerPeel
-                      imageSrc={s.src}
-                      width={s.width}
-                      rotate={s.rotate}
-                      peelBackHoverPct={s.peelBackHoverPct}
-                      peelBackActivePct={s.peelBackActivePct}
-                      shadowIntensity={s.shadowIntensity}
-                      lightingIntensity={s.lightingIntensity}
-                      initialPosition={s.initialPosition}
-                      peelDirection={s.peelDirection}
-                      className="left-0 top-0"
-                    />
-                  </div>
-                );
-              })}
+                    src={s.src}
+                    alt={s.alt}
+                    width={s.width}
+                    rotateDeg={s.rotateDeg}
+                  />
+                ))}
               </div>
             </div>
           </div>
