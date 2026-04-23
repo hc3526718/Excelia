@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Wordmark wrapper: replace inner content with true vector artwork when available. Raster fallback references Excelia_Name.png in the same folder. -->
+<!-- Raster fallback uses site-root URL so this SVG works when inlined or fetched from any route. Replace with pure vector artwork when ready. -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 640 160" role="img" aria-labelledby="excelia-wordmark-title">
   <title id="excelia-wordmark-title">Excelia</title>
-  <image href="Excelia_Name.png" width="640" height="160" preserveAspectRatio="xMidYMid meet" />
+  <image xlink:href="/assets/Excelia_Name.png" href="/assets/Excelia_Name.png" width="640" height="160" preserveAspectRatio="xMidYMid meet" />
 </svg>

@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
+import { ExceliaWordmark } from "@/components/brand/ExceliaWordmark";
 
 function UserIcon({ className }: { className?: string }) {
   return (
@@ -77,10 +77,10 @@ export function SiteHeader({ visible }: SiteHeaderProps) {
       aria-hidden={!visible}
     >
       <nav
-        className="flex w-full max-w-6xl items-center justify-between gap-1 rounded-[14px] bg-white px-2 py-1.5 shadow-[0_12px_40px_rgba(45,77,54,0.14)] sm:gap-3 sm:rounded-[16px] sm:px-4 sm:py-2.5 md:px-5 md:py-3"
+        className="grid w-full max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-x-2 gap-y-1 rounded-[14px] bg-white px-2 py-1.5 shadow-[0_12px_40px_rgba(45,77,54,0.14)] sm:gap-x-3 sm:rounded-[16px] sm:px-4 sm:py-2.5 md:px-5 md:py-3"
         aria-label="Primary"
       >
-        <ul className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-0.5 font-[family-name:var(--font-barlow)] text-[10px] font-semibold leading-tight sm:gap-x-5 sm:text-sm md:text-[15px]">
+        <ul className="flex min-w-0 flex-wrap items-center justify-self-start gap-x-2 gap-y-0.5 font-[family-name:var(--font-barlow)] text-[10px] font-semibold leading-tight sm:gap-x-5 sm:text-sm md:text-[15px]">
           <li>
             <a
               className="text-[var(--excelia-rust)] transition-opacity hover:opacity-75"
@@ -109,37 +109,33 @@ export function SiteHeader({ visible }: SiteHeaderProps) {
 
         <Link
           href="/"
-          className="mx-0.5 shrink-0 translate-y-[1px] sm:mx-1 md:mx-3"
+          className="relative z-[1] mx-auto block max-w-[min(52vw,220px)] shrink-0 translate-y-[1px] sm:max-w-[min(44vw,280px)] md:max-w-[320px]"
           aria-label="Excelia home"
         >
-          <Image
-            src="/assets/Excelia_Name.svg"
-            alt="Excelia"
-            width={320}
-            height={70}
-            className="h-[1.75rem] w-auto sm:h-12 md:h-14 lg:h-[3.5rem] xl:h-16"
+          <ExceliaWordmark
             priority
+            className="mx-auto block h-[1.75rem] w-auto max-w-full sm:h-12 md:h-14 lg:h-[3.5rem] xl:h-16"
           />
         </Link>
 
-        <div className="flex flex-1 items-center justify-end gap-1 sm:gap-2 md:gap-3">
+        <div className="flex min-w-0 items-center justify-end justify-self-end gap-1 sm:gap-2 md:gap-3">
           <button
             type="button"
-            className="inline-flex size-8 items-center justify-center rounded-full text-[var(--excelia-rust)] transition-colors hover:bg-black/[0.04] sm:size-10"
+            className="inline-flex size-8 shrink-0 items-center justify-center rounded-full text-[var(--excelia-rust)] transition-colors hover:bg-black/[0.04] sm:size-10"
             aria-label="Account"
           >
             <UserIcon className="size-4 sm:size-5" />
           </button>
           <button
             type="button"
-            className="inline-flex size-8 items-center justify-center rounded-full text-[var(--excelia-rust)] transition-colors hover:bg-black/[0.04] sm:size-10"
+            className="inline-flex size-8 shrink-0 items-center justify-center rounded-full text-[var(--excelia-rust)] transition-colors hover:bg-black/[0.04] sm:size-10"
             aria-label="Shopping basket"
           >
             <BasketIcon className="size-4 sm:size-5" />
           </button>
           <a
             href="#shop"
-            className="inline-flex min-h-8 items-center justify-center rounded-full bg-[var(--excelia-rust)] px-2.5 py-1.5 font-[family-name:var(--font-barlow)] text-[10px] font-semibold leading-none text-white shadow-sm transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-md sm:min-h-10 sm:px-5 sm:text-sm md:px-6 md:text-[15px]"
+            className="inline-flex min-h-8 shrink-0 items-center justify-center rounded-full bg-[var(--excelia-rust)] px-2.5 py-1.5 font-[family-name:var(--font-barlow)] text-[10px] font-semibold leading-none text-white shadow-sm transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-md sm:min-h-10 sm:px-5 sm:text-sm md:px-6 md:text-[15px]"
           >
             Shop Now
           </a>

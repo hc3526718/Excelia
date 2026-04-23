@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { ExceliaWordmark } from "@/components/brand/ExceliaWordmark";
 
 type Stage = "center" | "morph" | "handoff";
 
@@ -74,7 +75,7 @@ export function IntroSequence({
         className={`relative mx-auto my-auto overflow-hidden ${panelBase} ${
           isBar
             ? "mt-0 h-[78px] w-[min(72rem,calc(100vw-2rem))] px-4 py-2 sm:px-5"
-            : "w-[min(380px,92vw)] max-h-[min(36svh,280px)] max-w-none px-3.5 pb-2 pt-2 sm:max-h-[min(40svh,320px)] sm:w-[min(400px,90vw)] sm:px-4 sm:pb-2.5 sm:pt-2.5"
+            : "w-[min(460px,95vw)] max-h-[min(42svh,340px)] max-w-none px-5 pb-3 pt-3 sm:max-h-[min(46svh,380px)] sm:w-[min(500px,93vw)] sm:px-7 sm:pb-4 sm:pt-4"
         }`}
         initial={false}
         animate={{
@@ -92,7 +93,7 @@ export function IntroSequence({
           className={`flex h-full min-h-0 items-center ${
             isBar
               ? "flex-row justify-start gap-2"
-              : "flex-col justify-center gap-0.5 text-center sm:gap-0.5"
+              : "flex-col justify-center gap-0 text-center"
           }`}
           layout={false}
         >
@@ -106,7 +107,7 @@ export function IntroSequence({
               alt=""
               width={520}
               height={160}
-              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(3.1rem,12.5vw,4.5rem)] sm:h-[clamp(3.4rem,11vw,5.25rem)]"}`}
+              className={`pointer-events-none w-auto select-none ${isBar ? "h-11 sm:h-12" : "h-[clamp(3.45rem,13vw,5.1rem)] sm:h-[clamp(3.75rem,12vw,5.75rem)]"}`}
               priority
               aria-hidden
             />
@@ -120,17 +121,13 @@ export function IntroSequence({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.28 }}
-                className="flex flex-col items-center gap-0.5 sm:gap-0.5"
+                className="flex flex-col items-center gap-0"
               >
-                <Image
-                  src="/assets/Excelia_Name.svg"
-                  alt="Excelia"
-                  width={640}
-                  height={128}
-                  className="h-[clamp(2.5rem,9.5vw,3.75rem)] w-auto sm:h-[clamp(2.75rem,8.5vw,4.5rem)]"
+                <ExceliaWordmark
                   priority
+                  className="h-[clamp(2.85rem,10vw,4.25rem)] w-auto sm:h-[clamp(3.1rem,9vw,5rem)]"
                 />
-                <p className="max-w-lg px-1 font-[family-name:var(--font-instrument-serif)] text-[clamp(0.9rem,2.6vw,1.3rem)] italic leading-tight text-[var(--excelia-forest)] sm:text-[clamp(1.05rem,2.8vw,1.4rem)]">
+                <p className="max-w-lg px-1 pt-1 font-[family-name:var(--font-instrument-serif)] text-[clamp(0.95rem,2.75vw,1.4rem)] italic leading-tight text-[var(--excelia-forest)] sm:pt-0.5 sm:text-[clamp(1.1rem,2.9vw,1.5rem)]">
                   We grow Caribbean Roots
                 </p>
               </motion.div>

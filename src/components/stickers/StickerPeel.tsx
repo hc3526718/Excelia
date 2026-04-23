@@ -233,7 +233,13 @@ export default function StickerPeel({
       className={`draggable sticker-peel-scope ${className}`}
       style={cssVars}
     >
-      <svg width="0" height="0" aria-hidden>
+      {/* Non-zero SVG canvas so filter defs resolve for every instance (0×0 breaks filters in WebKit/Chromium). */}
+      <svg
+        aria-hidden
+        className="pointer-events-none fixed left-[-9999px] top-0 h-px w-px overflow-hidden"
+        width={1}
+        height={1}
+      >
         <defs>
           <filter id={`${fid}-pl`}>
             <feGaussianBlur stdDeviation="1" result="blur" />

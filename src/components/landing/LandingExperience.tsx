@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { type FormEvent, useCallback, useState } from "react";
+import { ExceliaWordmark } from "@/components/brand/ExceliaWordmark";
 import { SiteHeader } from "@/components/hero/SiteHeader";
 import { HeroSection } from "@/components/hero/HeroSection";
 import StickerPeel from "@/components/stickers/StickerPeel";
@@ -12,31 +12,34 @@ import { MissionSection } from "@/components/mission/MissionSection";
 import { PillarsSection } from "@/components/pillars/PillarsSection";
 import { StorySection } from "@/components/story/StorySection";
 
-/** Rotation while dragging follows pointer; resting rotate prop — within ±20° */
+/** Tight row: ~5px gap between sticker assets; minimal Y stagger; slight X offsets for separation */
 const STICKERS = [
   {
     src: "/assets/Island_Sticker.png",
-    rotate: -14,
+    rotate: -12,
     peelDirection: 124,
     peelBackHoverPct: 11,
     peelBackActivePct: 70,
     shadowIntensity: 0.58,
     lightingIntensity: 0.11,
-    initialPosition: { x: 6, y: 8 } as const,
+    initialPosition: { x: 2, y: 1 } as const,
+    /** px — horizontal stagger (avoid overlap when rotated) */
+    xShiftPx: -6,
     yNudgePx: 0,
-    width: 208,
+    width: 184,
   },
   {
     src: "/assets/Flag_Sticker.png",
-    rotate: 18,
+    rotate: 14,
     peelDirection: 206,
     peelBackHoverPct: 12,
     peelBackActivePct: 68,
     shadowIntensity: 0.55,
     lightingIntensity: 0.1,
-    initialPosition: { x: -4, y: 14 } as const,
-    yNudgePx: 22,
-    width: 216,
+    initialPosition: { x: 4, y: 0 } as const,
+    xShiftPx: 14,
+    yNudgePx: -2,
+    width: 184,
   },
   {
     src: "/assets/Logo_Sticker.png",
@@ -46,11 +49,17 @@ const STICKERS = [
     peelBackActivePct: 72,
     shadowIntensity: 0.62,
     lightingIntensity: 0.09,
-    initialPosition: { x: 10, y: -4 } as const,
-    yNudgePx: -14,
-    width: 212,
+    initialPosition: { x: 3, y: 2 } as const,
+    xShiftPx: 10,
+    yNudgePx: 2,
+    width: 184,
   },
 ];
+
+/** Drag/peel bounds — minimal but enough for flap + drag */
+function stickerBoundsPx(w: number) {
+  return { bw: w + 18, bh: w + 22 };
+}
 
 const FOOTER_EXPLORE_LINKS = [
   { href: "#about", label: "About" },
@@ -59,27 +68,16 @@ const FOOTER_EXPLORE_LINKS = [
   { href: "#shop", label: "Shop Now" },
 ];
 
-function FooterBrandStickerSection() {
+function SiteFooterExplore() {
   return (
-    <section
-      className="relative overflow-x-hidden border-t border-white/20 bg-[var(--excelia-forest)] pb-14 pt-4 text-[var(--excelia-cream)] sm:pb-16 sm:pt-6"
-      aria-label="Excelia emblem, site links, and stickers"
-    >
-      {/* Full-bleed logo (emblem) — spans viewport width */}
-      <div className="relative mx-auto mb-10 w-full sm:mb-12 md:mb-14">
-        <Image
-          src="/assets/Excelia_Logo.png"
-          alt="Excelia emblem"
-          width={1800}
-          height={720}
-          sizes="100vw"
-          className="mx-auto block h-auto w-full max-h-[min(52vh,560px)] object-contain object-center px-2 sm:px-4"
-        />
-      </div>
+    <div className="border-t border-[var(--excelia-stone)]/35 bg-[var(--excelia-cream)] px-3 pb-12 pt-10 text-[var(--excelia-forest)] sm:px-8 sm:pb-14 sm:pt-12">
+      <div className="mx-auto max-w-6xl">
+        <div className="w-full px-1 sm:px-4">
+          <ExceliaWordmark className="mx-auto block h-auto w-full max-h-[min(38vh,440px)] max-w-[min(96vw,1100px)] object-contain object-center" />
+        </div>
 
-      <div className="mx-auto max-w-6xl px-3 sm:px-8">
         <nav
-          className="border-t border-white/15 pt-8 font-[family-name:var(--font-barlow)] text-xs text-white/90 sm:text-sm"
+          className="mt-10 border-t border-[var(--excelia-stone)]/35 pt-8 font-[family-name:var(--font-barlow)] text-xs text-[var(--excelia-forest)] sm:mt-12 sm:text-sm"
           aria-label="Explore"
         >
           <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--excelia-gold)] sm:text-xs">
@@ -89,7 +87,7 @@ function FooterBrandStickerSection() {
             {FOOTER_EXPLORE_LINKS.map((item) => (
               <li key={item.href}>
                 <Link
-                  className="transition-opacity hover:opacity-75"
+                  className="text-[var(--excelia-forest)] opacity-90 transition-opacity hover:opacity-70"
                   href={item.href}
                 >
                   {item.label}
@@ -98,37 +96,8 @@ function FooterBrandStickerSection() {
             ))}
           </ul>
         </nav>
-
-        <div className="relative mt-12 flex w-full min-w-0 justify-center sm:mt-14 lg:justify-end">
-          <div className="flex max-w-full flex-wrap items-start justify-center gap-x-5 gap-y-6 sm:gap-x-8 sm:gap-y-10 lg:justify-end">
-            {STICKERS.map((s) => (
-              <div
-                key={s.src}
-                className="relative shrink-0"
-                style={{
-                  transform: `translateY(${s.yNudgePx}px)`,
-                  width: s.width + 64,
-                  height: s.width + 72,
-                }}
-              >
-                <StickerPeel
-                  imageSrc={s.src}
-                  width={s.width}
-                  rotate={s.rotate}
-                  peelBackHoverPct={s.peelBackHoverPct}
-                  peelBackActivePct={s.peelBackActivePct}
-                  shadowIntensity={s.shadowIntensity}
-                  lightingIntensity={s.lightingIntensity}
-                  initialPosition={s.initialPosition}
-                  peelDirection={s.peelDirection}
-                  className="left-0 top-0"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -147,49 +116,86 @@ function ContactFooter() {
   };
 
   return (
-    <footer className="relative isolate z-0 bg-[var(--excelia-forest)] text-[var(--excelia-cream)]">
+    <footer className="relative isolate z-0">
       <div
         id="contact"
-        className="scroll-mt-20 border-t border-[var(--excelia-stone)]/40 px-3 py-12 sm:scroll-mt-24 sm:px-8 sm:py-16"
+        className="scroll-mt-20 border-t border-[var(--excelia-stone)]/40 bg-[var(--excelia-forest)] px-3 py-10 text-[var(--excelia-cream)] sm:scroll-mt-24 sm:px-8 sm:py-12"
       >
-        <div className="mx-auto max-w-6xl">
-          <p className="font-[family-name:var(--font-barlow)] text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--excelia-gold)] sm:text-xs sm:tracking-[0.25em]">
-            Contact
-          </p>
-          <p className="mt-2 max-w-lg font-[family-name:var(--font-barlow)] text-[13px] leading-relaxed text-white/85 sm:mt-3 sm:text-sm">
-            Partner with Excelia for nutmeg‑smart soil programs, allocation updates,
-            and sustainability reporting—we reply to growers, retailers, and brand
-            teams routing spice waste back to the ground.
-          </p>
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start lg:gap-12">
+          <div className="min-w-0 max-w-lg lg:max-w-none">
+            <p className="font-[family-name:var(--font-barlow)] text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--excelia-gold)] sm:text-xs sm:tracking-[0.25em]">
+              Contact
+            </p>
+            <p className="mt-2 font-[family-name:var(--font-barlow)] text-[13px] leading-relaxed text-white/85 sm:mt-3 sm:text-sm">
+              Partner with Excelia for nutmeg‑smart soil programs, allocation
+              updates, and sustainability reporting—we reply to growers,
+              retailers, and brand teams routing spice waste back to the ground.
+            </p>
 
-          <form
-            onSubmit={handleSubmit}
-            className="mt-6 flex max-w-md flex-col gap-3 sm:flex-row sm:items-center"
-          >
-            <label htmlFor="footer-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="footer-email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              placeholder="you@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="min-h-12 w-full flex-1 rounded-full border border-white/20 bg-white/10 px-5 py-3 font-[family-name:var(--font-barlow)] text-sm text-white placeholder:text-white/45 outline-none ring-0 transition-[background,border] focus:border-white/40 focus:bg-white/15"
-            />
-            <button
-              type="submit"
-              className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-full bg-[var(--excelia-rust)] px-8 font-[family-name:var(--font-barlow)] text-sm font-semibold text-white shadow-sm transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-md"
+            <form
+              onSubmit={handleSubmit}
+              className="mt-6 flex max-w-md flex-col gap-3 sm:flex-row sm:items-center"
             >
-              Submit
-            </button>
-          </form>
+              <label htmlFor="footer-email" className="sr-only">
+                Email address
+              </label>
+              <input
+                id="footer-email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="min-h-12 w-full flex-1 rounded-full border border-white/20 bg-white/10 px-5 py-3 font-[family-name:var(--font-barlow)] text-sm text-white placeholder:text-white/45 outline-none ring-0 transition-[background,border] focus:border-white/40 focus:bg-white/15"
+              />
+              <button
+                type="submit"
+                className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-full bg-[var(--excelia-rust)] px-8 font-[family-name:var(--font-barlow)] text-sm font-semibold text-white shadow-sm transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-md"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+
+          <div className="min-w-0 overflow-visible lg:max-w-none lg:justify-self-end">
+            <div className="-mx-3 overflow-x-auto overflow-y-visible px-3 pb-1 sm:mx-0 sm:overflow-visible sm:pb-0">
+              <div className="flex min-w-min flex-nowrap items-end justify-center gap-[5px] overflow-visible sm:justify-end">
+              {STICKERS.map((s) => {
+                const { bw, bh } = stickerBoundsPx(s.width);
+                return (
+                  <div
+                    key={s.src}
+                    className="relative shrink-0 overflow-visible"
+                    style={{
+                      width: bw,
+                      height: bh,
+                      transform: `translate(${s.xShiftPx}px, ${s.yNudgePx}px)`,
+                      zIndex: 1,
+                    }}
+                  >
+                    <StickerPeel
+                      imageSrc={s.src}
+                      width={s.width}
+                      rotate={s.rotate}
+                      peelBackHoverPct={s.peelBackHoverPct}
+                      peelBackActivePct={s.peelBackActivePct}
+                      shadowIntensity={s.shadowIntensity}
+                      lightingIntensity={s.lightingIntensity}
+                      initialPosition={s.initialPosition}
+                      peelDirection={s.peelDirection}
+                      className="left-0 top-0"
+                    />
+                  </div>
+                );
+              })}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <FooterBrandStickerSection />
+      <SiteFooterExplore />
     </footer>
   );
 }
