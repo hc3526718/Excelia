@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -221,62 +221,72 @@ export function SiteHeader({ visible }: SiteHeaderProps) {
         </nav>
       </motion.header>
 
-      {mobileMenuOpen ? (
-        <div
-          id="mobile-nav-overlay"
-          className="fixed inset-0 z-[2147483100] md:hidden"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Site navigation"
-        >
-          <div className="absolute inset-0 bg-[var(--excelia-forest)]">
-            <Image
-              src="/assets/Imageback.png"
-              alt=""
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
-            <div
-              className="absolute inset-0 bg-[var(--excelia-forest)]/55"
-              aria-hidden
-            />
-          </div>
+      <AnimatePresence>
+        {mobileMenuOpen ? (
+          <motion.div
+            id="mobile-nav-overlay"
+            key="mobile-nav-overlay"
+            className="fixed inset-0 z-[2147483100] md:hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site navigation"
+            initial={{ x: "-100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{
+              duration: 0.48,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <div className="absolute inset-0 bg-[var(--excelia-forest)]">
+              <Image
+                src="/assets/NewestImagery_nocopy.png"
+                alt=""
+                fill
+                className="object-cover object-center"
+                sizes="100vw"
+                priority
+              />
+              <div
+                className="absolute inset-0 bg-[var(--excelia-forest)]/55"
+                aria-hidden
+              />
+            </div>
 
-          <div className="relative flex h-full flex-col px-6 pb-10 pt-[calc(env(safe-area-inset-top)+5.5rem)]">
-            <nav
-              className="flex flex-1 flex-col justify-center gap-2 font-[family-name:var(--font-barlow)] text-xl font-semibold tracking-wide text-[var(--excelia-cream)]"
-              aria-label="Mobile primary"
-            >
-              <Link
-                href="/"
-                className="rounded-xl px-4 py-4 transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-white/10"
-                onClick={() => setMobileMenuOpen(false)}
+            <div className="relative flex h-full flex-col px-6 pb-10 pt-[calc(env(safe-area-inset-top)+5.5rem)]">
+              <nav
+                className="flex flex-1 flex-col justify-center gap-2 font-[family-name:var(--font-barlow)] text-xl font-semibold tracking-wide text-[var(--excelia-cream)]"
+                aria-label="Mobile primary"
               >
-                Home
-              </Link>
-              {MOBILE_NAV_LINKS.map((item) => (
                 <Link
-                  key={item.href}
-                  href={item.href}
+                  href="/"
                   className="rounded-xl px-4 py-4 transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-white/10"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {item.label}
+                  Home
                 </Link>
-              ))}
-              <Link
-                href="/shop"
-                className="mt-4 inline-flex w-fit items-center rounded-full bg-[var(--excelia-rust)] px-8 py-3.5 text-[15px] font-semibold text-white shadow-md transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-lg"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Shop Now
-              </Link>
-            </nav>
-          </div>
-        </div>
-      ) : null}
+                {MOBILE_NAV_LINKS.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="rounded-xl px-4 py-4 transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-white/10"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <Link
+                  href="/shop"
+                  className="mt-4 inline-flex w-fit items-center rounded-full bg-[var(--excelia-rust)] px-8 py-3.5 text-[15px] font-semibold text-white shadow-md transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-lg"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Shop Now
+                </Link>
+              </nav>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </>
   );
 }
